@@ -1,0 +1,409 @@
+// The DOM (Document Object Model) is a programming interface for web documents. It represents the structure of a document as a tree of objects, making it possible to access, modify, and manipulate the document's content, structure, and styles dynamically using JavaScript.
+
+// We use the DOM (Document Object Model) to manipulate and interact with web pages dynamically. It provides a way for developers to programmatically access, modify, and respond to changes in the structure, content, and style of a webpage. Here are the key reasons why the DOM is used:
+
+// Advantages of the DOM
+// Dynamically update content, styles, and attributes.
+// Create interactive user interfaces.
+// Access and manipulate the structure of a webpage.
+// --------------------------------------------------------------------------------
+// Key Concepts of the DOM
+
+
+
+
+
+
+// -----------------------------------------------------------------------------------
+// Accessing the DOM
+// JavaScript provides multiple ways to interact with the DOM.
+
+// Accessing Elements:
+
+// 1) document.getElementById("id"): Select an element by its ID.
+// note it only select one first id it will ignore the rest
+<h1 id="h1">Hello</h1>
+<script>
+  const h1 = document.getElementById("h1");
+  console.log(h1.textContent); // Outputs: Hello
+</script>
+
+// 2) document.getElementsByName Select an element by its name.
+  <input type="text" name="username" value="John" />
+    <input type="text" name="username" value="Doe" />
+    <script>
+      const inputs = document.getElementsByName("username");
+      console.log(inputs);
+    </script>
+
+// 3) document.getElementsByClassName("class"): Select elements by class name.
+
+// and can select from id to classname
+
+ <h1 class="heading">hi</h1>
+    <h1 class="heading">hello</h1>
+    <div id="test">
+      <h1 class="heading">welome</h1>
+      <h1 class="heading">back</h1>
+    </div>
+
+    <script>
+      let container = document.getElementById("test");
+
+      const cls = container.getElementsByClassName("heading");
+      console.log(container);
+    </script>
+
+// 4) document.getElementsByTagName("tag"): Select all elements by same tag name.
+<h1>Heading1</h1>
+<h1>Heading2</h1>
+
+<h1>Heading3</h1>
+
+<script>
+  const headings = document.getElementsByTagName("h1");
+  console.log(headings[1].textContent); // Outputs: Heading
+</script>
+
+// 5) document.querySelector("selector"): Select the first element matching a CSS selector.
+  <div id="idcontainer">id Content</div>
+    <div class="classcontainer">class Content</div>
+
+    <script>
+      const container = document.querySelector(".classcontainer");
+      console.log(container.textContent);// output full div
+      console.log(container.textContent); // Outputs: Content
+    </script>
+
+// 6) document.querySelectorAll("selector"): Select all elements matching a CSS selector.
+// and we can also use on div and tags also document.querySelectorAll("div,h1")
+
+<h1 class="heading">hi</h1>
+    <h1 class="heading">hello</h1>
+    <div id="test">
+      <h1 class="heading">welome</h1>
+      <h1 class="heading">back</h1>
+    </div>
+
+    <script>
+  let qAll = document.querySelectorAll(".heading")
+  console.log(qAll)
+    </script>
+------------------------------------------------------------------------
+// 7) accessing parent node through child element
+<div id="parent">
+  <h1 id="child">This is a child element</h1>
+</div>
+
+<script>
+  // Access the child element
+  const child = document.getElementById("child");
+  
+  // Access the parent node through the child element
+  const parent = child.parentNode;
+  
+  console.log(parent); // Logs the <div> element (parent)
+</script>
+-----------------------------------------------------------------------------
+{/* 8) accessing child node through parent  */}
+
+
+  <div class="parent">
+    <h1>Heading 1</h1>
+    <h1>Heading 2</h1>
+    <h1>Heading 3</h1>
+  </div>
+  
+  <script>
+    // Accessing the parent element
+    const parent = document.querySelector(".parent");
+    
+    // Accessing all child nodes of the parent
+    const children = parent.children; // returns an HTMLCollection of child elements
+    
+    // Accessing the first child node (first <h1>)
+        console.log(children[0].textContent);
+        // or
+    console.log(parent.firstElementChild); 
+      // to print all the child
+    console.log(parent.childNodes)
+
+  </script>
+{/* ---------------------------------------------------------------------------- */}
+  {/* 9) finding the siblings previous and next */}
+  <div class="parent">
+    <h1>Heading 1</h1>
+    <h1 class="test">Heading 2</h1>
+    <h1>Heading 3</h1>
+    <h1>Heading 3</h1>
+
+  </div>
+  
+  <script>
+   let sib = document.querySelector(".test")
+    console.log(sib.previousElementSibling)
+    console.log(sib.nextElementSibling)
+</script>
+{/* ------------------------------------------------------ */}
+10) Creating tag
+document.createElement("tag"): Create a new element.
+
+let createDiv = document.createElement("div");  // Creates a new div element
+  createDiv.innerHTML = "<p> hello</p>";           // Sets inner HTML of the div
+  console.log(createDiv);  
+
+
+{/* 11) append child or Adding New Elements with ID Attributes */}
+
+{/* element.appendChild(node): Add a child node to an element. */}
+<script>
+  let createDiv = document.createElement("div");  // Creates a new div element
+  createDiv.innerHTML = "<p> hello </p>";          // Sets inner HTML of the div
+  
+  // Appends the div to the body
+  document.body.appendChild(createDiv);
+
+  // Set the id of the div element
+  createDiv.id = "title_div";
+
+  // Access the <p> element inside the div and set its id
+  let paragraph = createDiv.querySelector("p");
+  paragraph.id = "title_p";
+
+  // Log the created div element and its contents
+  console.log(createDiv);
+</script>
+-------------------------------------
+{/* The append() method allows you to add one or more elements or text nodes to a parent element. */}
+<body>
+    <h2>Example of Using the append() Method</h2>
+    <div id="container"></div>
+
+    <script>
+      // Select the parent element
+      const container = document.getElementById("container");
+
+      // Create a new paragraph element
+      const paragraph1 = document.createElement("p");
+      paragraph1.textContent = "This is the first paragraph.";
+
+      // Create another paragraph element
+      const paragraph2 = document.createElement("p");
+      paragraph2.textContent = "This is the second paragraph.";
+
+      // Append both elements and a string to the container
+      container.append(paragraph1, paragraph2, "This is additional text!");
+
+      console.log(container); // Logs the container with its children
+    </script>
+  </body>
+  {/* ---------------------------------------------------------------------------------
+12) */}
+{/* element.removeChild(node): Remove a child node. */}
+<ul id="list"><li id="item">Remove Me</li></ul>
+<script>
+  const list = document.getElementById("list");
+  const item = document.getElementById("item");
+  list.removeChild(item); // Removes <li>Remove Me</li>
+</script>
+{/* ------------------------------------------------------------------------------------------- */}
+{/* 13) element.replaceChild(newNode, oldNode): Replace a child node. */}
+<ul id="list"><li id="oldItem">Old Item</li></ul>
+<script>
+  const list = document.getElementById("list");
+  const oldItem = document.getElementById("oldItem");
+  const newItem = document.createElement("li");
+  newItem.textContent = "New Item";
+  list.replaceChild(newItem, oldItem); // Replaces oldItem with newItem
+</script>
+
+{/* ----------------------------------------------------------------------------- */}
+Modifying Elements
+
+element.innerHTML: Change or retrieve the content of an element.
+<div id="content">Old Content</div>
+<script>
+  const content = document.getElementById("content");
+  content.innerHTML = "New Content"; // Updates content
+</script>
+{/* ------------------------------------------------------------------------------------- */}
+{/* element.textContent: Change or retrieve text-only content. */}
+<h1 id="header">Old Header</h1>
+<script>
+  const header = document.getElementById("header");
+  header.textContent = "New Header"; // Updates text-only content
+</script>
+
+{/* element.setAttribute("attribute", "value"): Set an attribute value. */}
+<img id="image" />
+<script>
+  const img = document.getElementById("image");
+  img.setAttribute("src", "image.jpg"); // Adds src attribute
+</script>
+
+{/* element.style.property: Change an element's CSS styles.
+Creating and Removing Nodes: */}
+<p id="paragraph">Style me!</p>
+<script>
+  const paragraph = document.getElementById("paragraph");
+  paragraph.style.color = "blue"; // Changes text color to blue
+</script>
+----------------------------------------------------------------------------
+
+{/* Events in javascript
+In JavaScript, an event is an action or occurrence that happens in the browser, which JavaScript can detect and respond to. Events are crucial for creating interactive web pages because they allow developers to execute code when specific actions are performed by the user or the browser. */}
+
+
+{/* Types of Events in JavaScript */}
+
+{/* Mouse Events: */}
+
+{/* 1)click: Triggered when an element is clicked. */}
+
+<button id="clickButton">Click Me</button>
+<script>
+  document.getElementById("clickButton").addEventListener("click", () => {
+    alert("Button clicked!");
+  });
+</script>
+
+-----------------------------------------------------------------------------------
+{/* 2) mousemove: Triggered when the mouse is moved over an element. */}
+
+  <div id="trackArea" style="width: 300px; height: 100px; background: lightblue;"></div>
+  <p id="coordinates"></p>
+  <script>
+    const area = document.getElementById("trackArea");
+    const coords = document.getElementById("coordinates");
+    area.addEventListener("mousemove", (e) => {
+      coords.textContent = `X: ${e.offsetX}, Y: ${e.offsetY}`;
+    });
+  </script>
+
+--------------------------------------------------------------------------
+{/* mouseover: Triggered when the mouse pointer enters an element. */}
+<div id="hoverArea" style="width: 100px; height: 100px; background: lightgreen;"></div>
+<script>
+  const hoverArea = document.getElementById("hoverArea");
+  hoverArea.addEventListener("mouseover", () => {
+    hoverArea.textContent = "Mouse Over";
+  });
+  hoverArea.addEventListener("mouseout", () => {
+    hoverArea.textContent = "";
+  });
+</script>
+----------------------------------------------------------------------------------
+
+
+{/* Keyboard Events: */}
+
+{/* keypress: Triggered when a key is pressed down. */}
+document.addEventListener("click", function(e) {
+  console.log(e.target);  // Outputs: the element that was clicked
+});
+
+<body>
+  <input type="text" id="textInput" placeholder="Type something">
+<p id="keyInfo"></p>
+<script>
+  const input = document.getElementById("textInput");
+  const keyInfo = document.getElementById("keyInfo");
+  input.addEventListener("keydown", (e) => {
+    keyInfo.textContent = `Key Down: ${e.key}`;
+  });
+  input.addEventListener("keyup", (e) => {
+    keyInfo.textContent = `Key Up: ${e.key}`;
+  });
+</script>
+------------------------------------------------------------------
+{/* Form Events: */}
+
+{/* submit: Triggered when a form is submitted. */}
+  <form id="myForm">
+    <input type="text" placeholder="Enter your name" required>
+    <button type="submit">Submit</button>
+  </form>
+  
+  <script>
+    document.getElementById("myForm").addEventListener("submit", (e) => {
+      e.preventDefault(); // Prevent the form from submitting
+      console.log("Form submitted!"); // Log the message to the console
+    });
+  </script>
+
+
+{/* change: 
+Triggered when the value of an input element changes. */}
+  <select id="dropdown">
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+  </select>
+  <p id="selection"></p>
+  
+  <script>
+    const dropdown = document.getElementById("dropdown");
+    dropdown.addEventListener("change", () => {
+      // Log the selected value to the console
+      console.log(`Selected: ${dropdown.value}`);
+  
+      // Update the text content of the <p> element
+      document.getElementById("selection").textContent = `Selected: ${dropdown.value}`;
+    });
+  </script>
+
+
+{/* focus: Triggered when an element gains focus. &
+blur: Triggered when an element loses focus. */}
+
+ <input type="text" id="focusInput" placeholder="Focus on me">
+  <p id="focusStatus"></p>
+  <script>
+    const input = document.getElementById("focusInput");
+    const status = document.getElementById("focusStatus");
+    input.addEventListener("focus", () => {
+      status.textContent = "Input is focused!";
+    });
+    input.addEventListener("blur", () => {
+      status.textContent = "Input lost focus!";
+    });
+  </script>
+{/* ---------------------------------------------------------------------------- */}
+Window Events:
+
+
+resize: Triggered when the browser window is resized.
+
+ <script>
+    window.addEventListener("resize", () => {
+      console.log(`Window size: ${window.innerWidth}x${window.innerHeight}`);
+    });
+  </script>
+scroll: Triggered when the page is scrolled.
+  <div style="height: 2000px;">Scroll down</div>
+<script>
+  window.addEventListener("scroll", () => {
+    console.log(`Scroll position: ${window.scrollY}px`);
+  });
+</script>
+
+
+
+
+Event Handlers in JavaScript
+Event Handlers are JavaScript functions that are executed when an event is triggered on an HTML element. They define what happens in response to specific user actions or browser events.
+
+ <button id="myButton">Click Me!</button>
+  <p id="output"></p>
+
+  <script>
+    // Select the button element
+    const button = document.getElementById("myButton");
+
+    // Define the event handler function
+    function showMessage() {
+      document.getElementById("output").textContent = "Button was clicked!";
+    }
+
+    // Attach the event handler to the button
+    button.addEventListener("click", showMessage);
+  </script>

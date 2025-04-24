@@ -1,0 +1,242 @@
+2 - Methods That Do Not Change the Original Array (Return a New Array): [map, filter, slice, concat, flat, flatMap, toSorted, toReversed]
+
+
+// 7 Array Iteration Methods are forEach(),map(),filter(),reduce()
+Array Iteration Methods are forEach(),map(),filter(),reduce()
+
+
+------------------------------------------------------------------------------
+
+Higher order function
+higher-order function is a function that can accept other functions as arguments, return functions as values, or both  example   such as filter(),map(),reduce(),some() etc,
+
+Callback function
+ Any function that is passed as an argument to another function so that it can be executed in that other function is called as a callback function
+
+---------------------------------------------------------------------
+explination of parameters and org
+// Function declaration with parameters `a` and `b`
+function add(parm1, parm2) { 
+  return a + b; // Using the parameters inside the function
+}
+
+// Function call with arguments `5` and `3`
+const result = add(5, 3); // Here, `5` and `3` are the arguments
+
+console.log(result);
+----------------------------------------------------------------
+map() (Creates a new array with results from a function)
+
+another syntax with explanition:
+const numbers = [1, 2, 3];
+const originalArrayIncluded = numbers.map((num, index, array) => {
+  console.log(array); // Logs the original array on each iteration
+  return num * 2;
+});
+console.log(originalArrayIncluded);
+
+
+numbers is the original array: [1, 2, 3].
+map() is a method that takes a callback function with three arguments:
+num: The current element being processed in the array.
+index: The index of the current element.
+array: The original array (numbers in this case) that map() is operating on.
+--------------------------------------------------------------------------
+
+# higher order function  example
+syntax: let array = [1,2,3,4,5]
+function sum (add){
+    return add + 10
+}
+let mappedArray = array.map(sum)
+console.log(mappedArray)
+
+
+
+-------------------------------------------------
+let array = [1,2,3,4,5]
+let sum = numbers.map(num => {
+    console.log(num); // Log the value of num
+    return num * 2;   // Return the doubled value
+  });
+  
+  console.log(doubled);
+
+ another way of writing in short 
+const numbers = [1, 2, 3];
+const doubled = numbers.map(num => num * 2);
+
+console.log(doubled); 
+-----------------------------------------
+Example (copmaring both loop and map):
+
+ let array = [1,2,3,4,5]
+
+function sum (add){
+    return add + 10
+}
+
+// console.log(sum(10))
+let mappedArray = array.map(sum)
+console.log("am result of mapped array",mappedArray)
+console.log("am result of orginal array",array)
+
+
+
+let numbers = [1,2,3,4,5];
+
+for (let i = 0; i < numbers.length; i++) {
+  numbers[i] = numbers[i] + 10; // Directly modify the original array
+}
+
+console.log("am result of looped array",numbers); 
+
+
+-----------------------------------------------
+
+let numbers = [1, 2, 3];
+let doubled = []; // Create a new array to store the results
+
+for (let i = 0; i < numbers.length; i++) {
+  doubled.push(numbers[i] * 2); // Multiply each number by 2 and add to the new array
+}
+
+console.log(doubled);
+
+
+
+console.log(numbers); // Output: [1, 2, 3, 4] (original array is unchanged)
+console.log(doubled);
+
+
+-------------------------------------------------------------------------
+
+map using object
+
+let superHeros = [
+  { firstName: "Tony", secondName: "Stark" },
+  { firstName: "Peter", secondName: "Parker" },
+  { firstName: "Bruce", secondName: "Banner" },
+];
+
+function showSuperHeroes(data){
+    return data.firstName + " " + data.secondName
+}
+
+
+let a = superHeros.map(showSuperHeroes)
+console.log(a)
+
+---------------------------------------------------------
+
+// Use an anonymous callback function within .map()
+
+let superHeros = [
+  { firstName: "Tony", secondName: "Stark" },
+  { firstName: "Peter", secondName: "Parker" },
+  { firstName: "Bruce", secondName: "Banner" },
+];
+
+let fullNames = superHeros.map(function(data) {
+    return data.firstName + " " + data.secondName;
+});
+
+console.log(fullNames);
+
+----------------------------------------------------------
+Updated Code with Arrow Function:
+let superHeros = [
+  { firstName: "Tony", secondName: "Stark" },
+  { firstName: "Peter", secondName: "Parker" },
+  { firstName: "Bruce", secondName: "Banner" },
+];
+
+// Using an arrow function as the callback for .map()
+let a = superHeros.map(data => data.firstName + " " + data.secondName);
+
+console.log(a);
+
+=====================================================================
+filter() (Creates a new array with elements that pass the condition)
+
+let numbers = [1, 2, 3, 4, 5];
+let evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers); // Output: [2, 4]
+
+using for loop
+let numbers = [1, 2, 3, 4, 5];
+let evenNumbers = [];
+
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] % 2 === 0) {
+    evenNumbers.push(numbers[i]); // Add even number to the new array
+  }
+}
+
+console.log(evenNumbers);
+
+
+
+---------------------------------------------------------------
+
+let userAge = [23,45,9,18.6,30,12,8]
+let adultList = userAge.filter(checkAdult)
+function checkAdult(age){
+    return age >=18
+
+}
+console.log(adultList)
+
+
+===========================================================
+reduce() (Reduces the array to a single value)
+array should not be empty else it will throgh error so wee add 0 as second arg also called initialValue ,
+if we add a  undefined in the array in out put it show nan
+solution 
+
+let numbers = [1, 2, 3, 4];
+let sum = numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum); // Output: 10
+----------------------------------
+
+let numbers = [1,2,3,4,5, null, undefined]
+let sum = numbers.reduce((acc, num) =>{
+if(current === undefined){
+  current =0
+}
+return prev + current
+},0
+)
+-----------------------------------
+
+Example 2: Finding the Maximum Value
+
+let numbers = [10, 5, 100, 50];
+
+let max = numbers.reduce((accumulator, currentValue) => {
+  return (currentValue > accumulator) ? currentValue : accumulator;
+} 0);
+
+console.log(max);  // Output: 100
+Explanation:
+accumulator starts with the value 0 (provided as initialValue).
+In each iteration:
+On the first iteration: accumulator = 0, currentValue = 1. So, accumulator + currentValue = 0 + 1 = 1.
+On the second iteration: accumulator = 1, currentValue = 2. So, accumulator + currentValue = 1 + 2 = 3.
+This continues for all elements.
+After processing all elements, the final result is 15 (the sum of all the numbers).
+------------------------------------------------------
+
+// Reduce method
+let array = [ 2,3,1]
+let accumulateSum = array.reduce((previous, currentValue,index,array) =>{
+    console.log("previous",previous,"current",currentValue,"index",index,"array",array)
+
+    return (currentValue > accumulator ) ? currentValue : accumulator
+})
+
+console.log(accumulateSum)
+---------------------------------------------------------------------------
+
+
+

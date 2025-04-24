@@ -1,0 +1,152 @@
+function multiplicationTableForLoop(number) {
+    console.log(`Multiplication Table of ${number}:`);
+    for (let i = 1; i <= 10; i++) {
+      console.log(`${number} x ${i} = ${number * i}`);
+    }
+  }
+  
+  // Call the function
+  multiplicationTableForLoop(10)
+  
+  
+  function multiplicationTableWhileLoop(number) {
+    console.log(`Multiplication Table of ${number}:`);
+    let i = 1; // Initialize the counter
+    while (i <= 10) {
+      console.log(`${number} x ${i} = ${number * i}`);
+      i++; // Increment the counter
+    }
+  }
+  
+  // Call the function
+  multiplicationTableWhileLoop(9); 
+
+
+
+  // Arrow function for the calculator
+const calculator = (num1, num2, operation) => {
+  if (operation === "add") {
+    return num1 + num2; // Addition
+  } else if (operation === "subtract") {
+    return num1 - num2; // Subtraction
+  } else if (operation === "multiply") {
+    return num1 * num2; // Multiplication
+  } else if (operation === "divide") {
+    if (num2 !== 0) {
+      return num1 / num2; // Division
+    } else {
+      return "Error: Cannot divide by zero!";
+    }
+  } else if (operation === "modulo") {
+    return num1 % num2; // Modulo (remainder of division)
+  } else {
+    return "Invalid operation! Please use add, subtract, multiply, divide, or modulo.";
+  }
+};
+
+// Example usage
+const num1 = 30;
+const num2 = 21;
+
+console.log("Addition:", calculator(num1, num2, "add"));         // Output: 32
+console.log("Subtraction:", calculator(num1, num2, "subtract")); // Output: 28
+console.log("Multiplication:", calculator(num1, num2, "multiply")); // Output: 60
+console.log("Division:", calculator(num1, num2, "divide"));     // Output: 15
+console.log("Modulo:", calculator(num1, num2, "modulo"));       // Output: 0
+console.log("Invalid:", calculator(num1, num2, "invalid"));     // Output: Invalid operation!
+---------------------------------------------------------
+Task: FizzBuzz Challenge Using If-Else and For Loop
+Problem: Write a function fizzBuzz(n) that prints numbers from 1 to n. However:
+
+If the number is divisible by 3, print "Fizz".
+If the number is divisible by 5, print "Buzz".
+If the number is divisible by both 3 and 5, print "FizzBuzz".
+Otherwise, print the number itself.
+
+function fizzBuzz(n) {
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log("FizzBuzz");
+    } else if (i % 3 === 0) {
+      console.log("Fizz");
+    } else if (i % 5 === 0) {
+      console.log("Buzz");
+    } else {
+      console.log(i);
+    }
+  }
+}
+
+fizzBuzz(10);
+output:
+1
+2
+Fizz
+4
+Buzz
+Fizz
+
+------------------------------------------------------------------------------
+
+Multiplication Table (Nested For Loop)
+
+// Function to generate a multiplication table
+const generateMultiplicationTable = () => {
+  const size = 10;  // Size of the table (1 to 10)
+
+  // Outer loop (for the rows)
+  for (let i = 1; i <= size; i++) {
+    let row = "";  // Initialize an empty string for each row
+
+    // Inner loop (for the columns)
+    for (let j = 1; j <= size; j++) {
+      row += `${i * j}\t`; // Multiply i and j, add the result to the row string with a tab
+    }
+
+    console.log(row); // Print the row after the inner loop finishes
+  }
+};
+
+// Generate the multiplication table
+generateMultiplicationTable();
+
+output:
+1	2	3	4	5	6	7	8	9	10	
+2	4	6	8	10	12	14	16	18	20	
+3	6	9	12	15	18	21	24	27	30	
+4	8	12	16	20	24	28	32	36	40	
+5	10	15	20	25	30	35	40	45	50	
+6	12	18	24	30	36	42	48	54	60	
+7	14	21	28	35	42	49	56	63	70	
+8	16	24	32	40	48	56	64	72	80	
+9	18	27	36	45	54	63	72	81	90	
+10	20	30	40	50	60	70	80	90	100	
+
+Another Example: Nested Loops for Pattern Printing
+Here's another example of using nested loops to print a pattern of stars (*):
+
+
+// Function to print a triangle pattern
+const printTriangle = (n) => {
+  // Outer loop for number of rows
+  for (let i = 1; i <= n; i++) {
+    let stars = ""; // Initialize an empty string for stars
+
+    // Inner loop for printing stars in each row
+    for (let j = 1; j <= i; j++) {
+      stars += "*"; // Add a star to the string
+    }
+
+    console.log(stars); // Print the row of stars
+  }
+};
+
+// Print a triangle pattern with 5 rows
+printTriangle(5);
+Output:
+
+*
+**
+***
+****
+*****

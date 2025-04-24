@@ -1,0 +1,10 @@
+Template Literals
+Template Literals are Mainly Used to Call Variables
+ making code easier and cleaner to handle dynamic content.
+
+ const firstName = "John";
+const lastName = "Doe";
+const age = 30;
+
+const introduction = `Hello, my name is ${firstName} ${lastName}. I am ${age} years old.`;
+console.log(introduction);

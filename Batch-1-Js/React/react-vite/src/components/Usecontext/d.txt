@@ -1,0 +1,98 @@
+import  { createContext } from 'react';
+// export const UserContext = createContext(); 
+
+// Create the UserContext
+const UserContext = createContext();
+const CountryContext = createContext();
+const Parent = () => {
+  const user = { name: 'John Doe', age: 30 };
+const country = "India"
+  return (
+    // Provide the user object to the component tree
+    <>
+    <UserContext.Provider value={user}>
+      <CountryContext.Provider value={country} >
+      <div>
+        <h2>Parent Component</h2>
+      </div>
+      </CountryContext.Provider>    
+    </UserContext.Provider>
+    </>
+  );
+};
+
+export default Parent;
+export {UserContext,CountryContext}
+
+
+// --------------------------------------------------------------------------------
+
+import { UserContext,CountryContext } from "./Parent";
+const ChildC = () => {
+  return (
+    <>
+      <UserContext.Consumer>
+        {(user) => {
+          return (
+            <CountryContext.Consumer>
+              {(country) => {
+                return (
+                  <>
+                    <h1>{user.name}</h1>
+                    <h1>{user.age}</h1>
+                    <h1> {country}</h1>
+                  </>
+                );
+              }}
+            </CountryContext.Consumer>
+          );
+        }}
+      </UserContext.Consumer>
+    </>
+  );
+};
+
+export default ChildC;
+// =======================================================================================
+
+// createContext,provider,useContext
+import { createContext } from "react";
+import ChildC from "./ChildC";
+const FirstName = createContext();
+const SecondName = createContext();
+
+const Parent = () => {
+  return (
+    <div>
+      <FirstName.Provider value={"Baby"}>
+        <SecondName.Provider value={"John"}>
+          <ChildC/>
+        </SecondName.Provider>
+      </FirstName.Provider>
+    </div>
+  );
+};
+
+export default Parent;
+export { FirstName, SecondName };
+
+
+// ---------------------------------------------------------------------------------------
+// ChildC.js
+import { useContext } from "react";
+import { FirstName, SecondName } from "./Parent";
+
+const ChildC = () => {
+  const userName = useContext(FirstName);
+  const userSecondName = useContext(SecondName);
+
+  return (
+    <div>
+      <h1>Child C</h1>
+      <h3>{userName}</h3>
+      <h3>{userSecondName}</h3>
+    </div>
+  );
+};
+
+export default ChildC;

@@ -1,0 +1,71 @@
+
+Task: FizzBuzz Challenge Using If-Else and For Loop
+Problem: Write a function fizzBuzz(n) that prints numbers from 1 to n. However:
+
+If the number is divisible by 3, print "Fizz".
+If the number is divisible by 5, print "Buzz".
+If the number is divisible by both 3 and 5, print "FizzBuzz".
+Otherwise, print the number itself.
+
+function fizzBuzz(n) {
+  for (let i = 1; i <= n; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log("FizzBuzz");
+    } else if (i % 3 === 0) {
+      console.log("Fizz");
+    } else if (i % 5 === 0) {
+      console.log("Buzz");
+    } else {
+      console.log(i);
+    }
+  }
+}
+
+fizzBuzz(10);
+output:
+1
+2
+Fizz
+4
+Buzz
+Fizz
+
+=======================================================================
+
+
+
+in the given array all item have offer of 10% on them, change the array to store the final value
+we can do it by for of loop but for of loop dowsnt provide the index so need find out the way to get index
+
+solved by for of loop
+
+let items = [100, 100, 100];
+
+let i = 0
+for(let value of items){
+  console.log(`value at index ${i}= ${value}`)
+  let offer = value / 10
+  items[i] = items[i] - offer
+  console.log("value after offer = ", items[i])
+  i++
+
+}
+output:[ 90, 90, 90 ]
+
+--------------------------------------------------
+solved by for loop
+let items = [100, 100, 100];
+for (let i = 0; i < items.length; i++) {
+  let offer = items[i] / 10;
+  // items[i] = items[i] - offer; // Subtract offer and update the item
+
+  items[i] -= offer;
+}
+console.log(items);
+
+output:[ 90, 90, 90 ]
+
+
+============================================================================
+
+

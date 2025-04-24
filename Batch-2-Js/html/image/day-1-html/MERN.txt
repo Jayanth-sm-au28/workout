@@ -1,0 +1,7 @@
+MongoDB: A NoSQL database that stores data in flexible, JSON-like documents, making it scalable and easy to query.
+
+Express.js: A web application framework for Node.js that simplifies building backend APIs and handling HTTP requests and responses.
+
+React.js: A front-end JavaScript library for building user interfaces, focusing on creating interactive, dynamic, and reusable UI components.
+
+Node.js: A runtime environment that allows you to run JavaScript code on the server-side, enabling full-stack JavaScript development.

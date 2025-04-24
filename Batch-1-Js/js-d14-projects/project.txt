@@ -1,0 +1,144 @@
+
+
+
+=================================================================================
+
+digital clock
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock</title>
+  <style>
+    /* Basic styling to center the clock text */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      font-size: 48px; /* Set font size for the clock */
+      font-weight: bold; /* Make the clock text bold */
+      color: #333; /* Set the text color */
+    }
+  </style>
+</head>
+<body>
+  <!-- Container to display the clock -->
+  <div class="container">clock</div>
+
+  <script>
+    // Select the container element where the time will be displayed
+    let clock = document.querySelector(".container");
+
+    // Function to get the current time
+    function getTime() {
+      // Create a new Date object to get the current date and time
+      let time = new Date();
+
+      // Convert the time to a readable string in the local time format
+      return time.toLocaleTimeString(); // Example output: "12:34:56 PM"
+    }
+
+    // Update the clock every second using setInterval
+    setInterval(() => {
+      // Set the innerHTML of the clock container to the current time
+      clock.innerHTML = getTime();
+    }, 1000); // 1000 milliseconds = 1 second
+  </script>
+</body>
+</html>
+
+=======================================================================================
+
+bulb 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bulb</title>
+    <style>
+      /* Center the container horizontally using margin-left */
+      .container {
+        margin-left: 40%;
+      }
+
+      /* Set the size of the bulb image */
+      #img {
+        width: 180px;
+        height: 180px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main container holding the heading, bulb image, and buttons -->
+    <div class="container">
+      <!-- Heading that displays "Bulb" and its current state (On/Off) -->
+      <h1 class="head">Bulb <span id="text"></span></h1>
+      <!-- Image tag for displaying the bulb's state (on/off) -->
+      <img src="" alt="" id="img" />
+      <!-- Buttons for toggling the bulb's state -->
+      <div class="div">
+        <button id="on" onclick="btnOn()">On</button>
+        <button id="of" onclick="btnOff()">Off</button>
+      </div>
+    </div>
+
+    <script>
+      // Initial state setup when the page loads
+
+      // Set the bulb image to "off" initially by assigning the "off" image path
+      document.getElementById("img").src = "/assets/of.png";
+
+      // Set the text next to "Bulb" to display "off"
+      document.getElementById("text").innerHTML = "off";
+
+      // Function to handle the "On" button click
+      function btnOn() {
+        // Change the bulb image to the "on" image
+        document.getElementById("img").src = "/assets/on.png";
+
+        // Update the text next to "Bulb" to display "On"
+        document.getElementById("text").innerHTML = "On";
+
+        // Change the "On" button's background to red and text color to white
+        document.getElementById("on").style.background = "red";
+        document.getElementById("on").style.color = "white";
+
+        // Change the "Off" button's background to white and text color to black
+        document.getElementById("of").style.background = "white";
+        document.getElementById("of").style.color = "black";
+      }
+
+      // Function to handle the "Off" button click
+      function btnOff() {
+        // Change the bulb image to the "off" image
+        document.getElementById("img").src = "/assets/of.png";
+
+        // Update the text next to "Bulb" to display "Off"
+        document.getElementById("text").innerHTML = "Off";
+
+        // Change the "Off" button's background to green and text color to white
+        document.getElementById("of").style.background = "green";
+        document.getElementById("of").style.color = "white";
+
+        // Change the "On" button's background to white and text color to black
+        document.getElementById("on").style.background = "white";
+        document.getElementById("on").style.color = "black";
+      }
+    </script>
+  </body>
+</html>
+
+======================================================================================
+
+
+

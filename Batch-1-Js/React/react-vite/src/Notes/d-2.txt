@@ -1,0 +1,138 @@
+2. Class Components (Older Approach)
+Uses ES6 classes and extends React.Component.
+Requires a render() method to return JSX.
+Uses this.state and this.setState() for state management.
+📌 Example:
+jsx
+Copy
+Edit
+import React, { Component } from "react";
+
+class Counter extends Component {
+  constructor() {
+    super();
+    this.state = { count: 0 };
+  }
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.increment}>Increment</button>
+      </div>
+    );
+  }
+}
+----------------------------------------------------------------------------------
+ Conditional Rendering in React
+Conditional rendering means displaying content based on certain conditions.
+
+✅ Using if-else
+
+function UserGreeting({ isLoggedIn }) {
+  if (isLoggedIn) {
+    return <h1>Welcome back!</h1>;
+  } else {
+    return <h1>Please log in.</h1>;
+  }
+}
+✅ Using Ternary Operator
+
+function UserGreeting({ isLoggedIn }) {
+  return <h1>{isLoggedIn ? "Welcome back!" : "Please log in."}</h1>;
+}
+✅ Using Logical && Operator
+
+function Notification({ unread }) {
+  return (
+    <div>
+      {unread > 0 && <p>You have {unread} unread messages.</p>}
+    </div>
+  );
+}
+If unread > 0, it shows the message.
+If unread === 0, it shows nothing.
+
+
+---------------------------------------------------------------------------------
+Rendering Lists in React
+In React, you can use the .map() function to render lists dynamically.
+
+📌 Example: Rendering a List of Items
+jsx
+Copy
+Edit
+function ListItems() {
+  const fruits = ["Apple", "Banana", "Cherry"];
+
+  return (
+    <ul>
+      {fruits.map((fruit, index) => (
+        <li key={index}>{fruit}</li>
+      ))}
+    </ul>
+  );
+}
+
+export default ListItems;
+🔹 What’s happening here?
+
+fruits.map() loops through the array.
+It returns <li> elements for each fruit.
+The key prop is used to uniquely identify each list item.
+
+
+-----------------------------------------------------------------------------------
+
+
+✅ Why Use Keys in React?
+Keys help React identify which items changed, added, or removed. It improves performance when rendering lists.
+
+❌ Avoid Using Index as Key (if possible)
+Using the index as a key can cause issues when the list order changes.
+
+
+{fruits.map((fruit, index) => (
+  <li key={index}>{fruit}</li> // ⚠️ Not ideal for dynamic lists
+))}
+✅ Use Unique IDs Instead
+If each item has a unique id, use it as a key.
+
+
+const users = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+];
+
+function UsersList() {
+  return (
+    <ul>
+      {users.map((user) => (
+        <li key={user.id}>{user.name}</li> // ✅ Better approach
+      ))}
+    </ul>
+  );
+}
+✅ Example: Rendering a List of Components
+If you need to render components dynamically, you can do this:
+
+
+function User({ name }) {
+  return <li>{name}</li>;
+}
+
+function UsersList() {
+  const users = ["Alice", "Bob", "Charlie"];
+
+  return (
+    <ul>
+      {users.map((user, index) => (
+        <User key={index} name={user} />
+      ))}
+    </ul>
+  );
+}

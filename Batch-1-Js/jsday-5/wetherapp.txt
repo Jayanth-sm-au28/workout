@@ -1,0 +1,234 @@
+  <style>
+        body {
+            /* font-family: Arial, sans-serif; */
+            text-align: center;
+            background-color: #cbee59b8;
+            /* margin: 0;
+            padding: 0; */
+        }
+        main {
+            margin: 50px auto;
+            width: 50%;
+            max-width: 600px;
+        }
+     
+        /* #weather {
+            margin-top: 20px;
+            padding: 1px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        } */
+        /* img {
+            width: 100px;
+            height: 100px;
+        } */
+    </style>
+
+
+     <main>
+        <form>
+            <input type="search" id="search" placeholder="Enter city name" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        <div id="weather">
+            <h3>Welcome to weather app</h3>
+        </div>
+    </main>
+
+
+
+    // OpenWeatherMap API key
+const API_KEY = "31772367a0b149d2bb42b1e1764828e8";
+
+// Select necessary DOM elements
+const form = document.querySelector("form");
+const search = document.querySelector("#search");
+const weather = document.querySelector("#weather");
+
+
+search.addEventListener("input", (event) => {
+  console.log("User is typing:", event.target.value); // Logs the current input value
+});
+
+// Fetch weather data from API
+const getWeather = async (city) => {
+    try {
+        // Show a loading message
+        weather.innerHTML = `<h3>Loading...</h3>`;
+        
+        // Fetch data from the API
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+        const response = await fetch(url);
+        
+        // Handle invalid responses (city not found or other errors)
+        if (!response.ok) {
+            weather.innerHTML = `<h3 style="color: red;">City not found!</h3>`;
+            return; // Exit the function early if there's an error
+        }
+
+        // Parse the JSON response
+        const data = await response.json();
+        displayWeather(data); // Only call displayWeather if the response is valid
+    } catch (error) {
+        // Display error message for network issues
+        weather.innerHTML = `<h3 style="color: red;">${error.message}</h3>`;
+    }
+};
+
+// Display the fetched weather data
+const displayWeather = (data) => {
+    weather.innerHTML = `
+        <div>
+            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
+        </div>
+        <div>
+            <h2>${data.name}, ${data.sys.country}</h2>
+            <h3>${data.main.temp} ℃</h3>
+            <h4>${data.weather[0].description}</h4>
+            <p>Humidity: ${data.main.humidity}%</p>
+            <p>Wind Speed: ${data.wind.speed} m/s</p>
+        </div>
+    `;
+};
+
+
+// Add event listener to the form
+form.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent default form submission
+    const city = search.value.trim(); // Get the city name
+    console.log(search.value.trim(),"search.value")
+    if (city) {
+        getWeather(city); // Fetch weather data for the entered city
+        search.value = ""; // Clear the input field
+    } else {
+        weather.innerHTML = `<h3 style="color: red;">Please enter a city name!</h3>`;
+    }
+});
+
+================================================================================
+Using Promises:
+Now, let's refactor the getWeather function to use Promises explicitly.
+
+javascript
+Copy
+Edit
+// Promise-based version
+
+const getWeatherWithPromise = (city) => {
+    return new Promise((resolve, reject) => {
+        // Show a loading message
+        weather.innerHTML = `<h3>Loading...</h3>`;
+
+        // Fetch weather data from the API
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    reject("City not found!"); // Reject the Promise if the city is not found
+                } else {
+                    return response.json(); // Parse the response
+                }
+            })
+            .then(data => resolve(data)) // Resolve the Promise with the fetched data
+            .catch(error => reject(error.message)); // Reject on error
+    });
+};
+
+// Function to handle the response of the Promise
+const displayWeatherWithPromise = (data) => {
+    weather.innerHTML = `
+        <div>
+            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
+        </div>
+        <div>
+            <h2>${data.name}, ${data.sys.country}</h2>
+            <h3>${data.main.temp} ℃</h3>
+            <h4>${data.weather[0].description}</h4>
+            <p>Humidity: ${data.main.humidity}%</p>
+            <p>Wind Speed: ${data.wind.speed} m/s</p>
+        </div>
+    `;
+};
+
+// Handling the Promise with .then() and .catch()
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const city = search.value.trim();
+    if (city) {
+        getWeatherWithPromise(city)
+            .then(displayWeatherWithPromise) // Handle success
+            .catch((error) => {
+                weather.innerHTML = `<h3 style="color: red;">${error}</h3>`; // Handle error
+            });
+        search.value = "";
+    } else {
+        weather.innerHTML = `<h3 style="color: red;">Please enter a city name!</h3>`;
+    }
+});
+
+
+========================================================================================
+
+Using Callback:
+A callback is a function passed as an argument to another function, and it's executed after the completion of that function.
+
+In this case, we can modify the getWeather function to accept a callback that gets executed once the weather data is fetched:
+
+javascript
+Copy
+Edit
+// Callback-based version
+
+const getWeatherWithCallback = (city, callback) => {
+    // Show a loading message
+    weather.innerHTML = `<h3>Loading...</h3>`;
+
+    // Fetch weather data from the API
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                weather.innerHTML = `<h3 style="color: red;">City not found!</h3>`;
+                return; // Exit if the response is not OK
+            }
+            return response.json(); // Parse the response
+        })
+        .then(data => {
+            // Once data is fetched, pass it to the callback
+            callback(data);
+        })
+        .catch(error => {
+            // Handle network or other errors
+            weather.innerHTML = `<h3 style="color: red;">${error.message}</h3>`;
+        });
+};
+
+// Callback function to display the weather
+const displayWeatherCallback = (data) => {
+    weather.innerHTML = `
+        <div>
+            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
+        </div>
+        <div>
+            <h2>${data.name}, ${data.sys.country}</h2>
+            <h3>${data.main.temp} ℃</h3>
+            <h4>${data.weather[0].description}</h4>
+            <p>Humidity: ${data.main.humidity}%</p>
+            <p>Wind Speed: ${data.wind.speed} m/s</p>
+        </div>
+    `;
+};
+
+// Use the callback function
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const city = search.value.trim();
+    if (city) {
+        getWeatherWithCallback(city, displayWeatherCallback); // Fetch data and pass the callback to display it
+        search.value = "";
+    } else {
+        weather.innerHTML = `<h3 style="color: red;">Please enter a city name!</h3>`;
+    }
+});

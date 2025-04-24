@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Layout Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #007BFF;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+    nav {
+      background-color: #f4f4f4;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+    }
+    main {
+      display: flex;
+      margin: 20px;
+    }
+    aside {
+      width: 15%; /* Sidebar: 25% of the width */
+      background-color: #f8f9fa;
+      padding: 10px;
+      margin-right: 20px;
+    }
+    .content {
+      width: 70%; /* Main content: 70% of the width */
+    }
+    section {
+      width: 100%; /* Section width 100% within the content */
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #e9ecef;
+      box-sizing: border-box;
+    }
+    .articles {
+      display: flex; /* Use flexbox for side-by-side articles */
+      gap: 2px; /* Space between the articles */
+    }
+    article {
+      width: 48%; /* Each article takes up 48% of the content width */
+      padding: 10px;
+      background-color: #f1f3f5;
+      box-sizing: border-box;
+    }
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 2px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>Welcome to My Website</h1>
+  </header>
+  
+  <!-- Navigation Section -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  
+  <!-- Main Content Section -->
+  <main>
+    <!-- Sidebar Section -->
+    <aside>
+      <h2>Sidebar</h2>
+      <p>Links or extra content can go here.</p>
+    </aside>
+    
+    <!-- Content Section -->
+    <div class="content">
+      <!-- First Section: 75% width -->
+      <section>
+        <h2>Offer & Discount Section </h2>
+        <a href="https://www.google.com/" target="_main"><img src=""alt="google" height="20px" width="80px"/></a>
+        <p>Here, you can add the latest offers, discounts, or featured content for your visitors.</p>
+      </section>
+
+      <!-- Second Section: 75% width -->
+      <section>
+        <h2>Latest Blog Posts</h2>
+        <p>This section can feature the most recent blog posts or articles on your website.</p>
+      </section>
+
+      <!-- Articles Section: Side by Side -->
+      <div class="articles">
+        <article>
+          <h3>Article Title: Special Offer on Products</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis consequuntur magnam corporis minima dicta aut dolore,</p>
+        </article>
+
+        <article>
+          <h3>Article Title: New Products Launch</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quibusdam, inventore esse optio minima</p>
+        </article>
+        <article>
+          <h3>Article Title: New Products Launch</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis consequuntur magnam corporis minima dicta aut dolore, </p>
+        </article>
+        <article>
+          <h3>Article Title: New Products Launch</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quibusdam, inventore esse optio minima </p>
+        </article>
+
+      </div>
+      
+    </div>
+  </main>
+  
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 My Website. All rights reserved.</p>
+  </footer>
+</body>
+</html>

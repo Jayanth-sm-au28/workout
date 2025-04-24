@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Form Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="radio"], input[type="checkbox"] {
+      width: auto;
+      margin-right: 10px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="about.html">About</a>
+        <a href="form.html">Form</a>
+        <a href="table.html">Table</a>
+
+      </nav>
+  <h1>HTML Form Example</h1>
+  <p style="font-size: 20px; color: blue;">This form demonstrates all common form input elements in HTML.</p>
+<form>
+  <label> Enter your Name</label>
+  <input type="text" id="name" placeholder="Enter your  Name">
+
+  <label> Enter your Email</label>
+  <input type="email" id="email" placeholder="Enter your  Password">
+
+  <label> Enter your Password</label>
+  <input type="password" id="password" placeholder="Enter your  Password">
+
+  <label> Enter your Age</label>
+  <input type="number" id="age" placeholder="Enter your  age">
+
+  <label> Gender</label>
+  <!-- <input type="radio" id="male" value="male"> -->
+  
+  <label>Male</label>
+  <input type="radio" id="male" value="male" name="gender">
+  
+  <label>Female</label>
+  <input type="radio" id="female" value="female" name="gender">
+  
+  <label>Others</label>
+  <input type="radio" id="others" value="others" name="gender">
+
+
+  <label> Hobbies</label>
+  <label for = "hobby1"> Coading</label>
+  <input type="checkbox" id="hobby1" name="hobbie" value="Coading">
+  <label for = "hobby1"> Riding</label>
+
+  <input type="checkbox" id="hobby1" name="hobbie" value="Riding">
+  <label for = "hobby1"> Gaming</label>
+
+  <input type="checkbox" id="hobby1" name="hobbie" value="Gaming">
+  <label for = "hobby1"> Eating</label>
+
+  <input type="checkbox" id="hobby1" name="hobbie" value="Eating">
+
+
+
+  <label for="country"> Select your Country </label>
+  <select id="country" name="country" >
+    <option>India</option>
+    <option>USA</option>
+    <option>Germany</option>
+    <option>England</option>
+
+
+    <label>Give Your FeedBack</label>
+<textarea placeholder="Write your message here"> </textarea>
+
+<button type="Submit">Submit</button>
+  </select>
+</form>
+  
+
+</body>
+</html>

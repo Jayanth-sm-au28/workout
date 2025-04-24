@@ -1,0 +1,119 @@
+What Are Functions?
+A function in programming is like a reusable block of code that performs a specific task
+
+Functions are useful because:
+
+They help avoid repeating code.
+They make programs easier to read and debug.
+They allow you to organize your code into smaller, manageable parts.
+
+Here’s the basic structure of a function in JavaScript:
+
+function functionName(parameters) {
+    // Code to execute
+    return result; // Optional, returns a value
+}
+
+function greet() {
+    console.log("Hello, world!");
+}
+
+// Calling the function
+greet();
+
+function getGrade(marks) {
+//   let marks = 90;
+
+  if (marks >= 90) {
+    console.log("Grade: A");
+  } else if (marks >= 75) {
+    console.log("Grade: B");
+  } else if (marks >= 50) {
+    console.log("Grade: C");
+  } else {
+    console.log("Grade: Fail");
+  }
+}
+
+getGrade(60);
+
+
+const getGrade = (marks) => {
+    if (marks >= 90) {
+      console.log("Grade: A");
+    } else if (marks >= 75) {
+      console.log("Grade: B");
+    } else if (marks >= 50) {
+      console.log("Grade: C");
+    } else {
+      console.log("Grade: Fail");
+    }
+  };
+  
+  getGrade(85); // Output: Grade: B
+  getGrade(45);
+
+________________________________________
+
+Global Scope: Variables declared in the global context can be accessed anywhere in the program.
+
+Function Scope: Variables declared inside a function are only accessible within that function.
+
+Block Scope: Variables declared with let and const are limited to the block where they are 
+
+
+console.log(blockScopedVar); 
+// Global Scope
+let globalVariable = "I am in the global scope";
+
+function showScopes() {
+  // Function Scope
+  let functionVariable = "I am in the function scope";
+
+  if (true) {
+    // Block Scope
+    let blockVariable = "I am in the block scope";
+    console.log(blockVariable); // Accessible here: "I am in the block scope"
+    console.log(functionVariable); // Accessible here: "I am in the function scope"
+    console.log(globalVariable); // Accessible here: "I am in the global scope"
+  }
+
+  // console.log(blockVariable); // Error! blockVariable is not accessible here
+  console.log(functionVariable); // Accessible here: "I am in the function scope"
+  console.log(globalVariable); // Accessible here: "I am in the global scope"
+}
+
+// Calling the function
+showScopes();
+console.log("blockVariable.....", blockVariable);
+// Global variable is accessible here
+console.log(globalVariable); // Accessible here: "I am in the global scope"
+
+// console.log(functionVariable); // Error! functionVariable is not accessible here
+// console.log(blockVariable); // Error! blockVariable is not accessible here
+
+==================================================================
+arrow function
+Syntax
+variable name = ()=>
+(param1, param2, ..., paramN) => expression
+const add = (a, b) => a + b;
+console.log(add(3, 5)); // Output: 8
+Parentheses are required when there are multiple parameters.
+-------------------------------------------------------------------------
+3. Arrow Function with Multiple Statements
+
+const greet = (name) => {
+  const message = `Hello, ${name}!`;
+  return message;
+};
+console.log(greet("Jayanth")); // Output: "Hello, Jayanth!"
+Curly braces {} are used for multiple statements, and return is explicitly written.
+
+------------------------------------------------------------------------
+4. Arrow Function Without Parameters
+javascript
+Copy code
+const sayHello = () => "Hello, World!";
+console.log(sayHello()); // Output: "Hello, World!"
+Use empty parentheses () when there are no parameters.

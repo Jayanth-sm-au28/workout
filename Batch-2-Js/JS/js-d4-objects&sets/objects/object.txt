@@ -1,0 +1,186 @@
+// Objects:
+// In JavaScript, objects are one of the core data types and are used to store collections of data and more complex entities. They consist of key-value pairs, where keys (or properties) are strings (or Symbols) and values can be of any data type, including other objects, arrays, or functions.
+let userInfo = {
+  fName: "baby",
+  sName: "john",
+  age: 20,
+  city: "mumbai",
+  favMovies: ["rrr", 22, "abc", "zcx"],
+};
+console.log(userInfo.fullName());
+-------------------------------------------------------------------------
+// Ex for nested object & this key word  or methods
+// Methods:
+// The functions defined inside the constructor become methods of each pet
+// Each pet can feed() and play() independently
+// Methods can access and modify the object's properties using this
+
+let userInfo = {
+  fName: "baby",
+  sName: "john",
+  age: 20,
+  city: "mumbai",
+  favMovies: ["rrr", 22, "abc", "zcx"],
+  salary: function () {
+    return 90000;
+  },
+  fullName: function () {
+    return this.fName + this.sName;
+  },
+};
+console.log(userInfo.fullName());
+--------------------------------------------------------------------
+// Constructor
+// A constructor is a special function that creates and initializes objects
+// It's like a blueprint for creating similar objects with shared properties and methods
+// We use the new keyword to create instances from the constructor
+// Inside the constructor, this refers to the new object being created
+
+// Properties:
+// Each pet gets its own set of properties (name, species, hunger, energy, etc.)
+// These properties are unique to each instance
+// When we create a new, it starts with its own values
+
+
+// Methods:
+// The functions defined inside the constructor become methods of each 
+// Methods can access and modify the object's properties using this
+
+Constructor functions start with a capital letter (convention)
+Use this keyword to add properties and methods
+Use new keyword to create new objects
+Each object gets its own copy of the properties (make, model, year)
+
+Ex1
+function Car(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+  }
+  
+  const car1 = new Car("Toyota", "Camry", 2020);
+  const car2 = new Car("Honda", "Civic", 2022);
+  
+  console.log(car1);
+  console.log(car2);
+  Key points:
+
+
+ ------------------------------------------------------------------------ 
+Ex:2
+function UserInfo(fName, sName, age, city, favMovies) {
+    this.fName = fName;
+    this.sName = sName;
+    this.age = age;
+    this.city = city;
+    this.favMovies = favMovies;
+  
+    this.salary = function () {
+      return 90000;
+    };
+  
+    this.fullName = function () {
+      return this.fName + this.sName;
+    };
+  }
+  
+  const user = new UserInfo("baby", "john", 20, "mumbai", ["rrr", 22, "abc", "zcx"]);
+console.log({
+  ...user,
+  salary: user.salary(),
+  fullName: user.fullName(),
+});
+
+Task: Create a Simple Library System
+What You’ll Create:
+You will write JavaScript code to simulate a library system. This system will:
+
+Store genres: Keep track of all the unique genres (like Fiction, Non-Fiction, Science, etc.) of the books added to the library.
+Manage a list of books: Store details about the books, including their title, author, and genre.
+Add books: Create a function to add new books to the library.
+Find books by genre: Create a function to find and display all books belonging to a specific genre.
+
+const genres = new Set(); // To store unique genres
+const books = []; // To store the list of books
+
+// Function to add a book
+function addBook(title, author, genre) {
+  books.push({ title, author, genre }); // Add the book object
+  genres.add(genre); // Add the genre to the Set
+  console.log(`Book "${title}" by ${author} added under genre "${genre}".`);
+}
+
+// Function to get books by genre
+function getBooksByGenre(genre) {
+  const booksInGenre = books.filter(book => book.genre === genre);
+  if (booksInGenre.length === 0) {
+    console.log(`No books found in the genre "${genre}".`);
+    return;
+  }
+  console.log(`Books in the genre "${genre}":`);
+  booksInGenre.forEach(book => {
+    console.log(`- "${book.title}" by ${book.author}`);
+  });
+}
+
+// Adding books to the library
+addBook("1984", "George Orwell", "Dystopian");
+addBook("To Kill a Mockingbird", "Harper Lee", "Fiction");
+addBook("Brave New World", "Aldous Huxley", "Dystopian");
+addBook("The Great Gatsby", "F. Scott Fitzgerald", "Fiction");
+
+// Displaying books by genre
+getBooksByGenre("Dystopian");
+getBooksByGenre("Romance");
+
+
+function Library() {
+  const genres = new Set(); // To store unique genres
+  const books = []; // To store the list of books
+
+  // Method to add a book
+  const addBook = function (title, author, genre) {
+    books.push({ title, author, genre });
+    genres.add(genre); // Add the genre to the Set
+    console.log(`Book "${title}" by ${author} added under genre "${genre}".`);
+  };
+
+  // Method to get books by genre
+  const getBooksByGenre = function (genre) {
+    const booksInGenre = books.filter(book => book.genre === genre);
+    if (booksInGenre.length === 0) {
+      console.log(`No books found in the genre "${genre}".`);
+      return [];
+    }
+    console.log(`Books in the genre "${genre}":`);
+    booksInGenre.forEach(book => {
+      console.log(`- "${book.title}" by ${book.author}`);
+    });
+    return booksInGenre;
+  };
+
+  // Method to display all genres
+  const displayGenres = function () {
+    console.log("Available genres:");
+    genres.forEach(genre => console.log(`- ${genre}`));
+  };
+
+  // Return the functions to make them accessible
+  return {
+    addBook,
+    getBooksByGenre,
+    displayGenres,
+  };
+}
+
+// Example Usage:
+const myLibrary = Library();
+
+myLibrary.addBook("1984", "George Orwell", "Dystopian");
+myLibrary.addBook("To Kill a Mockingbird", "Harper Lee", "Fiction");
+myLibrary.addBook("Brave New World", "Aldous Huxley", "Dystopian");
+myLibrary.addBook("The Great Gatsby", "F. Scott Fitzgerald", "Fiction");
+
+myLibrary.displayGenres(); // Display all genres
+myLibrary.getBooksByGenre("Dystopian"); // List books in the Dystopian genre
+myLibrary.getBooksByGenre("Romance"); // No books found in this genre

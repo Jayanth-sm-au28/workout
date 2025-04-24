@@ -1,0 +1,155 @@
+what is html
+HTML (HyperText Markup Language) is the standard markup language used to create and design web pages. It provides the basic structure and layout of a website, allowing developers to define and organize content such as text, images, videos, links, and other elements.
+html is not case sensitive
+
+
+Key Features of HTML:
+Markup Language: Uses tags to structure content.
+Elements and Tags: Content is enclosed within tags, e.g., <h1>, <p>, <img>.
+Hypertext: Enables linking to other web pages or resources via <a> tags.
+Standardized: Governed by the World Wide Web Consortium (W3C) and WHATWG.
+
+HTML tags are the basic building blocks of an HTML document. They are used to define elements and structure content on a web page. Tags are enclosed in angle brackets (< >) and often come in pairs: an opening tag and a closing tag. The content is placed between these tags.
+#Note we can use tags inside one 
+
+
+<p>Am Pragraph</p> the full is called elements
+
+Browser make the index.html as a homepage 
+
+<!DOCTYPE html> <!-- Declares the document type as HTML5 -->
+<html lang="en"> <!-- Starts the HTML document and sets the language to English -->
+<head> <!-- Contains metadata and settings for the document -->
+    <meta charset="UTF-8"> <!-- Specifies the character encoding as UTF-8 for supporting all characters -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design by adjusting the page width for different devices -->
+    <title>Session</title> <!-- Sets the title of the web page, shown in the browser tab -->
+</head>
+<body> <!-- Defines the main content area of the web page -->
+    <h1>Hello World</h1> <!-- Displays a large heading with the text "Hello World" -->
+</body>
+</html> <!-- Closes the HTML document -->
+
+Comments:<!-- --> 
+In HTML, comments are written inside <!-- --> tags. These comments are not displayed on the webpage and are used to add notes or explanations in the code for developers.
+===============================================================================
+
+Attributes:
+Attributes in HTML are additional pieces of information included in tags to provide more details about an element, such as its behavior, appearance, or functionality. They are specified within the opening tag and consist of a name-value pair.
+
+<h1 style="color: blue;">This is a heading.</h1>
+<img src="image.jpg" alt="A beautiful landscape">
+
+=========================================================================
+What is <h1>?
+Definition: The <h1> tag in HTML is used to define the most important heading on a web page.
+
+Importance: It represents the main title of the page or a section and is typically the largest and most prominent heading.
+
+Key Characteristics:
+Semantic Meaning: <h1> conveys to search engines and screen readers that the content inside it is highly significant.
+
+Hierarchy: It’s the top-level heading in HTML, with subsequent headings (<h2> to <h6>) representing decreasing levels of importance.
+
+Default Styling: Browsers usually display <h1> text as bold and larger in size compared to other text, but this can be customized using CSS.
+
+===========================================================================
+
+The <p> tag:
+
+ in HTML is used to define a paragraph of text. It groups blocks of text together and provides some default styling, such as spacing before and after the paragraph.
+
+================================================================================
+
+The anchor tag:
+ in HTML, represented as <a>, is used to create hyperlinks. Hyperlinks allow users to navigate from one page to another, jump to a specific section of a page, or download a file.
+--------------------------------------------
+Absolute Link:
+An absolute link specifies the complete path to the resource, including the protocol (http:// or https://), domain name, and optionally the subdirectories or file name.
+<a href="https://google.com">google</a>
+<br/>
+<a href="https://amazon.com">amazon</a>
+--------------------------------------------
+Relative Link
+A relative link specifies the path to a resource relative to the current document's location. It doesn’t include the full URL (protocol, domain, etc.).
+to redirect in our own website , create new html file
+
+<a href="/test.html">test</a>
+
+============================================================================
+
+
+The image tag in HTML, represented as <img>, is used to embed images in a webpage. It is a self-closing tag, meaning it does not require a closing tag.
+
+Absolute Link:
+<img src = "https://i.ytimg.com/vi/KbP52NV4EOc/maxresdefault.jpg" width="100" height="100"/>
+Relative Link:
+<img src = "/image/images (5).jpg" width="100" height="100" alt="hockey"/>
+
+
+alt attribute is  for anothe name for alt
+
+==============================================================================
+
+1. Bold Text
+To make text bold, use the <b> or <strong> tag:
+
+<b>: Makes text bold for stylistic purposes.
+<strong>: Indicates strong importance or emphasis.
+Example:
+
+<p>This is <b>bold</b> text.</p>
+<p>This is <strong>important</strong> text.</p>
+------------------------------------------------------------
+2. Italic Text
+To make text italic, use the <i> or <em> tag:
+
+<i>: Makes text italic for stylistic purposes.
+<em>: Indicates emphasized text (often used for semantic meaning).
+Example:
+
+<p>This is <i>italic</i> text.</p>
+<p>This is <em>emphasized</em> text.</p>
+3. Underline Text
+To underline text, use the <u> tag:
+
+------------------------------------------------------------------
+<u>: Underlines the text (typically for emphasis or style).
+
+Copy code
+<p>This is <u>underlined</u> text.</p>
+
+==========================================================================
+
+The <hr> tag in HTML represents a horizontal rule, which is used to create a horizontal line across the webpage. It’s often used to separate content or indicate a thematic break between sections.
+
+Key Characteristics:
+Self-closing Tag: <hr> is a self-closing tag and doesn’t require a closing tag.
+Default Appearance: A thin, gray horizontal line spans the width of its container.
+Semantic Meaning: Indicates a shift in content, such as a change of topic.
+ <h1>Heading 1</h1>
+    <p>This is some content before the horizontal rule.</p>
+    <hr>
+    <h2>Heading 2</h2>
+    <p>This is some content after the horizontal rule.</p>
+
+==============================================================================
+The subscript and superscript tags in HTML are used to format text as subscript (below the baseline) or superscript (above the baseline). These tags are commonly used in mathematical expressions, chemical formulas, and footnotes.
+
+Subscript (<sub>):
+The <sub> tag formats text as a subscript, appearing smaller and below the baseline.
+<p>Water formula: H<sub>2</sub>O</p>
+
+Superscript (<sup>):
+The <sup> tag formats text as a superscript, appearing smaller and above the baseline.
+<p>Square of 3: 3<sup>2</sup></p>
+
+
+=======================================================================
+
+
+The <pre> tag in HTML is used to define preformatted text. The text inside the <pre> tag preserves both spaces and line breaks exactly as written in the HTML code. It’s typically used for displaying code, ASCII art, or any content where spacing is important.
+  <pre>
+This is preformatted text.
+    Spaces, tabs, and line breaks
+are preserved exactly.
+    </pre>

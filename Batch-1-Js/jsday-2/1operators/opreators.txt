@@ -1,0 +1,266 @@
+What are Operators in JavaScript?
+Operators in JavaScript are symbols or keywords used to perform operations on value They can be used for calculations, comparisons, logical operations,  etc.
+
+
+Types of Operators in JavaScript
+
+Arithmetic Operators: Used for mathematical calculations (e.g., addition, subtraction).
+
+Comparison Operators: Used to compare two values (e.g., ==, ===, >, <).
+
+Logical Operators: Used to combine conditions (e.g., &&, ||, !).
+
+Conditional (Ternary) Operator: Used as a shorthand for if-else (e.g., condition ? value1 : value2).
+
+Spread operator & Rest Operator
+
+________________________________________
+
+
+1. Arithmetic Operators
+Used for basic mathematical operations.
+let a = 5, b = 3;
+console.log(a + b); 
+
+(Subtraction): Subtracts the second value from the first.
+let a = 5, b = 3;
+console.log(a - b); 
+
+(Multiplication): Multiplies two values.
+let a = 5, b = 3;
+console.log(a * b); 
+
+(Division): Divides the first value by the second.
+let a = 6, b = 3;
+console.log(a / b); 
+
+(Modulus): Returns the remainder when the first value is divided by the second.
+let a = 5, b = 3;
+console.log(a % b); 
+
+++ (Increment): Increases the value by 1.
+let a = 5;
+a++;
+console.log(a)
+
+(Decrement): Decreases the value by 1.
+let a = 5;
+a--;
+console.log(a); 
+________________________________________
+
+2. Comparison Operators
+Used to compare two values and return a Boolean result.
+
+== (Equal): Checks if two values are equal, ignoring data types.
+console.log(5 == '5'); // Output: true
+
+=== (Strict Equal): Checks if two values are equal and of the same data type.
+console.log(5 === '5'); // Output: false
+
+
+! (NOT) operator in JavaScript is a logical operator that reverses the boolean value 
+If the value is true, it becomes false.
+If the value is false, it becomes true.
+
+let isRaining = true;
+console.log(!isRaining);
+
+!= (Not Equal): Checks if two values are not equal.
+console.log(5 != 3); // Output: true
+
+!== (Strict Not Equal): Checks if two values are not equal or not of the same data type.
+console.log(5 !== '5'); // Output: true
+
+> (Greater Than): Checks if the left value is greater than the right value.
+console.log(5 > 3); // Output: true
+
+< (Less Than): Checks if the left value is less than the right value.
+console.log(5 < 3); // Output: false
+
+>= (Greater Than or Equal): Checks if the left value is greater than or equal to the right value.
+console.log(5 >= 3); // Output: true
+
+<= (Less Than or Equal): Checks if the left value is less than or equal to the right value.
+console.log(5 <= 3); // Output: false
+________________________________________
+
+3. Logical Operators
+
+&& is a logical operator used to combine two or more conditions.
+
+Returns true: If both condition1 and condition2 are true.
+Returns false: If either condition1 or condition2 is false.
+
+let a = true, b = false;
+console.log(a && b); // Output: false
+
+ Using AND with Multiple Conditions
+let temperature = 25;
+let isSunny = true;
+
+if (temperature > 20 && isSunny) {
+  console.log("It's a perfect day for the beach!");
+} else {
+  console.log("Maybe another day.");
+}
+
+Combining More Than Two Conditions
+let username = "admin";
+let password = "12345";
+let isLoggedIn = true;
+
+if (username === "admin" && password === "12345" && isLoggedIn) {
+  console.log("Welcome, admin!");
+} else {
+  console.log("Invalid credentials.");
+}
+
+|| (Logical OR): Returns true if at least one of the operands is true.
+Returns true: If at least one of condition1 or condition2 is true.
+Returns false: If both condition1 and condition2 are false.
+
+let a = true, b = false;
+console.log(a || b); // Output: true
+
+
+let isUserLoggedIn = true;
+let hasPermission = false;
+-----------------------------
+
+
+if (isUserLoggedIn || hasPermission) {
+  console.log("Access granted.");
+} else {
+  console.log("Access denied.");
+}
+
+ Combining More Than Two Conditions
+let username = "user";
+let password = "12345";
+let isLoggedIn = false;
+
+if (username === "admin" || password === "12345" || isLoggedIn) {
+  console.log("Access granted.");
+} else {
+  console.log("Invalid credentials.");
+}
+
+! (Logical NOT): Inverts the Boolean value.
+Returns true: If the condition is false (because it is inverted).
+Returns false: If the condition is true (because it is inverted).
+
+let a = true;
+console.log(!a); // Output: false
+-----------------------------------------
+let isRaining = false;
+
+if (!isRaining) {
+  console.log("You can go outside, it's not raining!");
+} else {
+  console.log("Better stay inside, it's raining.");
+}
+-----------------------------------
+let isLoggedIn = true;
+
+if (!isLoggedIn) {
+  console.log("Please log in.");
+} else {
+  console.log("Welcome back!");
+}
+________________________________________
+
+4. if else statement (Conditional) Operator
+
+let age = 18;
+let result;
+
+if (age >= 18) {
+  result = 'Adult';
+} else {
+  result = 'Child';
+}
+
+
+let a = 10;
+let b = 20;
+
+if (a > b) {
+    console.log("a is larger");
+} else if (a < b) {
+    console.log("b is larger");
+} else {
+    console.log("Both are equal");
+}
+------------------------------------
+let marks = 85;
+
+if (marks >= 90) {
+    console.log("Grade: A");
+} else if (marks >= 75) {
+    console.log("Grade: B");
+} else if (marks >= 50) {
+    console.log("Grade: C");
+} else {
+    console.log("Grade: Fail");
+}
+
+Ternary (Conditional) Operator
+A shorthand for if-else statements.
+Syntax:  condition ? expressionIfTrue : expressionIfFalse;
+Checks a condition and returns one of two values based on the result.
+let age = 18;
+let result = (age >= 18) ? 'Adult' : 'Child';
+console.log(result); // Output: "Adult"
+
+example for if else
+let age = 18;
+let result;
+
+if (age >= 18) {
+  result = 'Adult';
+} else {
+  result = 'Child';
+}
+
+console.log(result);
+
+example-2
+let num = 10;
+let result = (num % 2 === 0) ? "Even" : "Odd";
+console.log(result);  // Output: "Even"
+________________________________________
+
+5 Spread (...) and Rest (...) Operator
+allows us to quickly copy all or part of an existing array or object into another array or object
+
+let arr = [1, 2, 3];
+let newArr = [...arr, 4, 5];
+console.log(newArr); // Output: [1, 2, 3, 4, 5]
+
+example-2
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const mergedArray = [...arr1, ...arr2];
+console.log(mergedArray);
+// Output: [1, 2, 3, 4, 5, 6]
+
+example-3
+const user = { name: "Alice", age: 25 };
+const extraInfo = { city: "New York", profession: "Engineer" };
+
+const fullProfile = { ...user, ...extraInfo };
+
+console.log(fullProfile);
+// Output: { name: "Alice", age: 25, city: "New York", profession: "Engineer" }
+
+
+•	Rest: Used to collect all remaining parameters in a function into an array.
+
+function fruits(...n){
+   return  console.log(n)
+
+}
+fruits("apple","kiwi","mango","guva")
+output =[ 'apple', 'kiwi', 'mango', 'guva' ]
+

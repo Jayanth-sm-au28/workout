@@ -1,0 +1,124 @@
+// OpenWeatherMap API key
+const API_KEY = "8b310a5570e605ccf1b4b12fcf747627";
+
+ // Select necessary DOM elements
+ const form = document.querySelector("form");
+ const search = document.querySelector("#search");
+ const weather = document.querySelector("#weather");
+ 
+ 
+ search.addEventListener("input", (event) => {
+   console.log("User is typing:", event.target.value); // Logs the current input value
+ });
+ 
+ // Fetch weather data from API
+ const getWeather = async (city) => {
+     try {
+         // Show a loading message
+         weather.innerHTML = `<h3>Loading...</h3>`;
+         
+         // Fetch data from the API fetch is a built-in JavaScript function that allows you to make HTTP requests (such as GET, POST, PUT, DELETE) from JavaScript to interact with remote resources like APIs or servers. It returns a Promise that resolves to the Response object representing the response to the request.
+ 
+         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+         const response = await fetch(url);
+         console.log("response".response)
+         // Handle invalid responses (city not found or other errors)
+         if (!response.ok) {
+             weather.innerHTML = `<h3 style="color: red;">City not found!</h3>`;
+             return; // Exit the function early if there's an error
+         }
+ 
+         // Parse the JSON response
+         const data = await response.json();
+         console.log("data",data)
+
+         displayWeather(data); // Only call displayWeather if the response is valid
+     } catch (error) {
+         // Display error message for network issues
+         weather.innerHTML = `<h3 style="color: red;">${error.message}</h3>`;
+     }
+ };
+ 
+ // Display the fetched weather data
+ const displayWeather = (data) => {
+     weather.innerHTML = `
+         <div>
+             <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
+         </div>
+         <div>
+             <h2>${data.name}, ${data.sys.country}</h2>
+             <h3>${data.main.temp} ℃</h3>
+             <h4>${data.weather[0].description}</h4>
+             <p>Humidity: ${data.main.humidity}%</p>
+             <p>Wind Speed: ${data.wind.speed} m/s</p>
+         </div>
+     `;
+ };
+ 
+ 
+ // Add event listener to the form
+ form.addEventListener("submit", (event) => {
+     event.preventDefault(); // Prevent default form submission
+     const city = search.value.trim(); // Get the city name
+     console.log(search.value.trim(),"search.value")
+     if (city) {
+         getWeather(city); // Fetch weather data for the entered city
+         search.value = ""; // Clear the input field
+     } else {
+         weather.innerHTML = `<h3 style="color: red;">Please enter a city name!</h3>`;
+     }
+ });
+ =====================================================================
+ // Step 1: Invite your friend to the movie
+function inviteFriend() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("You've invited your friend to the movie.");
+      resolve("Friend invited");
+    }, 1000); // Takes 1 second to send the invitation
+  });
+}
+
+// Step 2: Your friend checks with his parents (status: true/false)
+function askParentsPermission(permission) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(permission ? "Parents agreed!" : "Parents did not agree.");
+      resolve(permission); // Resolves with the permission status (true or false)
+    }, 2000); // Takes 2 seconds for parents' decision
+  });
+}
+
+// Step 3: Notify your friend if he can come
+function confirmDecision(permission) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(permission ? "Your friend is coming to the movie!" : "Your friend cannot come.");
+      resolve(permission ? "Friend is coming" : "Movie night canceled");
+    }, 1000); // Takes 1 second to notify the decision
+  });
+}
+
+// The main function that handles everything
+async function movieNight(permission) {
+  try {
+    // Step 1: Invite your friend to the movie
+    await inviteFriend();
+
+    // Step 2: Your friend checks with his parents
+    const status = await askParentsPermission(permission); // Pass permission as argument
+
+    // Step 3: Confirm with your friend if he can come
+    const result = await confirmDecision(status);
+    console.log(result);
+
+  } catch (error) {
+    console.log("Error:", error);
+  }
+}
+
+// Set permission to false (parents did not agree)
+let permission = false;  // Set to `false` to simulate parents not agreeing
+
+movieNight(permission);  // Start the process
+SON is widely used in web development for transmitting data between a server and a client or between different parts of an application.

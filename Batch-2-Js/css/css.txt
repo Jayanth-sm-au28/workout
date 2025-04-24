@@ -1,0 +1,1771 @@
+
+CSS (Cascading Style Sheets) is a stylesheet language used to control the presentation and layout of web pages. It allows you to style and design HTML elements, giving them visual appeal and making web pages more engaging and user-friendly. 
+
+Key Features of CSS:
+Styling Content: CSS can change colors, fonts, spacing, layout, and more for HTML elements.
+Separation of Content and Design: HTML structures the content, while CSS handles its appearance.
+Responsive Design: CSS can make websites adapt to different screen sizes and devices using media queries.
+Reusability: Styles can be applied consistently across multiple pages, reducing repetition.
+
+How CSS Works:
+CSS applies styles to HTML elements by targeting them through selectors (like tag names, classes, IDs, or attributes).
+========================================================================
+1. Inline Styles
+Definition: Styles applied directly to an HTML element using the style attribute.
+<p style="color: blue; font-size: 16px;">This is a paragraph.</p>
+Use Case: Best for quick styling or individual elements where external or internal styles are not needed.
+Advantages:
+Easy to apply for small, one-off changes.
+Overrides external and internal styles due to higher specificity.
+
+Disadvantages:
+Not reusable.
+Makes the HTML cluttered and less maintainable.
+Harder to debug or update.
+------------------------------------------------------------------------------------------
+2. Internal Styles
+Definition: Styles written inside a <style> tag in the <head> section of the HTML document.
+<html>
+<head>
+    <style>
+        p {
+            color: green;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <p>This is a paragraph.</p>
+</body>
+</html>
+Use Case: Useful for single-page designs where styles don't need to be reused.
+Advantages:
+Keeps styles centralized within the document.
+Allows reuse of styles within the same HTML file.
+Disadvantages:
+Cannot be reused across multiple pages.
+Increases the size of the HTML document.
+----------------------------------------------------------------------------------------
+3. External Styles
+Definition: Styles written in a separate .css file and linked to the HTML using the <link> tag.
+
+Use Case: Ideal for larger projects and when styles need to be reused across multiple pages.
+
+Advantages:
+
+Keeps HTML clean and readable.
+Enables reusability and consistency across multiple web pages.
+Easy to maintain and update.
+Disadvantages:
+
+Requires an extra HTTP request to load the CSS file.
+Won't work offline unless cached.
+==============================================================================
+
+Color Property
+
+foreGround color
+color: blue;
+-----------------------------------------------------------------------------
+
+ Background Properties
+These properties style the background of elements.
+background-color: lightblue;
+============================================================================
+color picker website,coolors,canva
+color systems 
+rgb 0 to 255
+color:rgb(10,50,99)
+--------------------------------------------------------------------
+
+What Are Hexadecimal Colors in CSS?
+A hexadecimal color is a six-digit code used in CSS to represent colors. It combines red, green, and blue (RGB) values, each represented as a two-digit hexadecimal number.
+#FF0000 = Red (maximum red, no green or blue).
+#00FF00 = Green (maximum green, no red or blue).
+#0000FF = Blue (maximum blue, no red or green).
+#FFFFFF = White (maximum red, green, and blue).
+#000000 = Black (no red, green, or blue).
+h1 {
+    color: #e74c3c; /* Red shade */
+}
+===================================================================================
+selectors
+
+universalSelector
+*{
+    color:blue
+}
+------------------------------------------------------------------------
+elementselector
+h1{
+    color:green
+}
+----------------------------------------------------------------------
+What is the id Selector in CSS?
+
+The id selector in CSS is used to style a specific HTML element with a unique id attribute. It is represented using a hash symbol (#) followed by the id value.
+Key Points:
+Uniqueness: An id should be unique within a document, meaning it can be applied to only one element.
+Specificity: The id selector has higher specificity than class selectors or element selectors, making it useful for overriding styles.
+
+    <p id="intro">Welcome to CSS tutorials!</p>
+
+    #intro {
+    font-family: Arial, sans-serif;
+    color: green;
+    font-weight: bold;
+}
+
+--------------------------------------------------------------------------------------
+
+What is the class Selector in CSS?
+
+The class selector in CSS is used to style one or more elements with a shared class attribute. It is represented by a dot (.) followed by the class name.
+Key Points:
+Reusability: Unlike the id selector, the class selector can be applied to multiple elements.
+Lower Specificity: The class selector has lower specificity than the id selector but higher specificity than element selectors.
+Versatility: You can apply multiple classes to a single element, allowing for flexible and modular styling.
+
+<div class="box">Box 1</div>
+<div class="box">Box 2</div>
+<div class="box">Box 3</div>
+
+.box {
+    border: 2px solid black;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+}
+=====================================================================
+Text Properties---- changes according to parent
+text-align
+Possible Values:
+left: Aligns text to the left (default for most languages).
+right: Aligns text to the right.
+center: Centers the text.
+justify: Stretches the text so it spans the entire width of the container, with even spacing between words.
+start (CSS3): Aligns text to the start of the reading direction (left for LTR, right for RTL).
+end (CSS3): Aligns text to the end of the reading direction.
+--------------------------------------------------------------------------------
+The text-decoration Property in CSS
+The text-decoration property in CSS is used to add decoration to text, such as underlining, overlining, line-through, or none. It also allows you to style text with combinations of these decorations.
+Common Values for text-decoration:
+none: Removes any decoration from the text (default behavior).--- text-decoration: none;
+underline: Adds a line underneath the text.-----------text-decoration: underline;
+overline: Adds a line above the text.--------------------- text-decoration: overline;
+line-through: Adds a line through the text (strikethrough).-text-decoration: line-through;
+blink (deprecated): Makes the text blink (no longer widely supported).
+---------------------------------------------------------------------------------
+
+The font-weight Property in CSS
+The font-weight property in CSS is used to define the thickness or boldness of text. It allows you to apply different levels of weight (or thickness) to the font, making it more prominent or lighter depending on the value you set.
+100 (thin): The lightest weight.
+400 (normal): Regular weight.
+700 (bold): The heaviest common weight.
+900 (extra-bold): The heaviest weight.
+
+font-weight: 300;  /* Light */
+font-weight: 500;  /* Medium */
+font-weight: 800;  /* Extra-Bold */
+
+-------------------------------------------------------------------------------------
+
+The font-family Property in CSS or font style
+The font-family property in CSS is used to specify the font of the text content within an HTML element. It defines the typeface to be applied to the text, allowing you to control the appearance of the text across the entire page or specific elements.
+
+Font Categories (Generic Font Families):
+serif: Fonts with small lines or decorations at the end of characters (e.g., Times New Roman, Georgia).
+sans-serif: Fonts without serifs, which are clean and modern (e.g., Arial, Helvetica).
+
+monospace: Fonts where each character takes up the same width (e.g., Courier, Consolas).
+
+cursive: Fonts that mimic handwriting or calligraphy (e.g., Brush Script, Comic Sans MS).
+ body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-family: 'Times New Roman', serif;
+        }
+
+        .code {
+            font-family: 'Courier New', monospace;
+        }
+ ==========================================================================
+
+ Units in CSS
+In CSS, units are used to define the values for various properties, such as width, height, margins, padding, font size, and positioning. These units can be categorized into absolute units and relative units.
+1. Absolute Units  2 Common Relative Units:
+ 
+
+1. Absolute Units width: 200px; height: 200px; 
+
+Absolute units are fixed in size and are not affected by any other factors like screen size or resolution.
+
+1 Common Absolute Units:
+px (Pixels):
+Defines a specific number of pixels on the screen.
+Commonly used for precise control over layout elements.
+Example: width: 200px;
+
+cm (Centimeters):
+Defines a length in centimeters.
+Mostly used in print media, where physical size matters.
+Example: width: 5cm;
+
+
+mm (Millimeters):
+Defines a length in millimeters.
+Like cm, it’s mostly used for print.
+Example: height: 50mm;
+in (Inches):
+Defines a length in inches.
+Often used in print styles.
+Example: margin: 2in;
+
+
+pt (Points):
+A point is 1/72 of an inch, typically used in print media for font sizes.
+Example: font-size: 12pt;
+pc (Picas):
+1 pica = 12 points.
+Example: line-height: 2pc;
+2. Relative Units
+Relative units are based on some other reference value (such as the parent element’s size, viewport size, or the user's default settings).
+-------------------------------------------------------------------
+2 Common Relative Units:  
+In CSS, relative units are units of measurement that depend on the size of other elements, such as the parent element, root element, or even the viewport. They adapt to the context, making them useful for responsive design.
+ font-size: 2em; margin: 10rem;
+
+em:
+Relative to the font-size of the parent element. 1em equals the current font size.
+Often used for font sizes, margins, paddings, and other spacing.
+Example: font-size: 2em; (twice the font size of the parent element).
+
+rem (Root em):
+Relative to the font-size of the root element (<html>), typically 16px by default.
+Unlike em, it does not compound with nested elements.
+Example: font-size: 1.5rem; (1.5 times the root font size).
+
+vw (Viewport Width):
+Relative to 1% of the width of the viewport.
+Useful for responsive design to adjust elements based on the viewport width.
+Example: width: 50vw; (50% of the viewport width).
+
+
+vh (Viewport Height):
+Relative to 1% of the height of the viewport.
+Example: height: 100vh; (100% of the viewport height).
+
+
+vmin:
+Relative to the smaller of either the viewport width or height.
+Example: font-size: 5vmin; (5% of the smaller dimension of the viewport).
+
+
+vmax:
+Relative to the larger of either the viewport width or height.
+Example: font-size: 5vmax; (5% of the larger dimension of the viewport).
+
+
+% (Percentage):
+Relative to the parent element's size. Used for width, height, margins, padding, and positioning.
+Example: width: 50%; (50% of the parent element’s width).
+--------------------------------------------------------------------------------
+
+The text-transform Property in CSS
+
+The text-transform property in CSS is used to control the capitalization of text within an HTML element. It allows you to transform text to uppercase, lowercase, capitalize the first letter of each word, or leave the text as is.
+
+Common Values for text-transform:
+none:
+
+No transformation is applied. The text remains in its original case.
+Example: text-transform: none;
+uppercase:
+
+Converts all characters in the text to uppercase.
+
+Example: text-transform: uppercase;
+p {
+    text-transform: uppercase;
+}
+
+----------------------------------------------
+lowercase:
+
+Converts all characters in the text to lowercase.
+Example: text-transform: lowercase;
+
+p {
+    text-transform: lowercase;
+}
+
+-----------------------------------------------------
+capitalize:
+
+Capitalizes the first letter of each word.
+Example: text-transform: capitalize;
+
+p {
+    text-transform: capitalize;
+}
+
+------------------------------------------------------------
+
+CSS Box Model
+The CSS Box Model is a fundamental concept in web design that defines how the size and spacing of HTML elements are calculated. Every element in a web page is represented as a rectangular box, and the box model controls the element's content, padding, border, and margin.
+
+Box Model Structure
+The box model consists of the following components:
+
+1 Content: The actual content of the box, such as text, images, or other elements. The width and height properties control the size of the content area.
+
+2 Padding: The space between the content and the border. Padding is used to create space around the content inside the box.
+Example: padding: 20px;
+
+3 Border: The boundary that surrounds the padding (if any). Borders can have different widths, styles, and colors.
+Example: border: 2px solid black;
+
+4 Margin: The space outside the border, separating the element from others around it. Margins create space between elements.
+Example: margin: 10px;
+
+--------------------------------------------------------------------------
+Box Model Properties in CSS:
+
+width: The width of the content box (does not include padding, border, or margin).
+height: The height of the content box (does not include padding, border, or margin).
+padding: Defines the space between the content and the border.
+border: Defines the width, style, and color of the border.
+margin: Defines the space outside the border, between the element and other elements.
+
+.box {
+            width: 300px;
+            height: 150px;
+            padding: 20px;
+            border: 5px solid blue;
+            margin: 30px;
+            background-color: lightgray;
+        }
+----------------------------------------------------------------------------------
+
+CSS Border Properties---- note we can write in single line also border:2px solid red
+The border property in CSS allows you to define the borders around an HTML element. Borders can be customized in terms of width, style, and color, and you can apply different border settings for each side (top, right, bottom, left).
+border-radius: 10px;
+border-color: red;
+border-style: dashed;
+border-width: 5px;
+border: 2px solid black;
+ div:hover {
+        border-color: blue;
+    }
+border-top-left-radius: 20px;
+border-top-right-radius: 30px;
+border-bottom-right-radius: 40px;
+border-bottom-left-radius: 10px;
+border-radius: 10px 20px 30px 40px;
+
+
+Shorthand for border-radius
+You can specify all four corners in a single border-radius property using shorthand notation:
+
+1 Four Values: border-radius: top-left top-right bottom-right bottom-left;
+
+border-radius: 10px 20px 30px 40px;
+Top-left: 10px
+Top-right: 20px
+Bottom-right: 30px
+Bottom-left: 40px
+
+
+2 Two Values: border-radius: top-left-and-bottom-right top-right-and-bottom-left;
+
+border-radius: 10px 20px;
+Top-left and bottom-right: 10px
+Top-right and bottom-left: 20px
+
+3 One Value: border-radius: uniform-radius;
+border-radius: 15px;
+All corners will have a radius of 15px.
+
+--------------------------------------------------------------------------------------
+What is Padding in CSS?
+In CSS, padding is the space between the content of an element and its border. It creates an "inner margin" around the content. Padding helps control the spacing inside an element.
+padding: 20px;
+
+padding-top: 10px;    
+padding-right: 15px;  
+padding-bottom: 20px; 
+padding-left: 25px; 
+
+-------------------------------------------------------------------------------------
+What is Margin in CSS?
+In CSS, margin is the space outside an element's border. It creates distance between an element and the other elements around it. Margins are useful for controlling the layout and spacing between elements.
+ margin: 20px; 
+
+ margin: 20px 10px; /* Top-Bottom: 20px, Left-Right: 10px */
+ margin: 20px 10px 15px; /* Top: 20px, Left-Right: 10px, Bottom: 15px */
+
+Difference Between Padding and Margin:
+Padding	Margin
+Space inside the element's border.	Space outside the element's border.
+Affects the element's size.	Affects the distance between elements.
+
+=========================================================================
+What is the display Property in CSS?
+The display property in CSS is used to define how an element is displayed on the webpage. It controls the layout behavior of an element — whether it appears as a block, inline, flex, grid, or is hidden entirely.
+
+
+block---	The element takes up the full width available and starts on a new line.
+Common Block Elements: <div>, <h1> to <h6>, <p>, <section>, <article>.
+<div style="background-color: lightblue;">I am a block element (div).</div>
+<h1 style="background-color: lightcoral;">I am a block element (h1).</h1>
+<p style="background-color: lightgreen;">I am a block element (p).</p>
+
+inline---	The element takes up only as much width as its content and stays in line.
+Common Inline Elements: <span>, <a>, <strong>, <em>, <b>
+<span style="background-color: lightblue;">I am inline (span).</span>
+<a href="#" style="background-color: lightgreen;">I am inline (a).</a>
+<strong style="background-color: lightcoral;">I am inline (strong).</strong>
+
+inline-block----	Behaves like inline, but you can set width and height on it.
+Common Usage: Custom buttons, icons, or layouts
+<div style="display: inline-block; background-color: lightblue; width: 100px; height: 50px; text-align: center;">
+  I am inline-block.
+</div>
+<div style="display: inline-block; background-color: lightgreen; width: 120px; height: 50px; text-align: center;">
+  Another inline-block element.
+</div>
+
+none----	Hides the element; it will not take up any space in the layout.
+Common Usage: Temporarily hiding content like modals or dropdowns.
+<div style="display: none;">You cannot see me! (I am hidden)</div>
+<div style="display: block;">I am visible!</div>
+
+flex----	Makes the element a flex container for flexible layouts.
+Common Usage: Navigation bars, card layouts, responsive grids
+<div style="display: flex; background-color: lightgray; gap: 10px; padding: 10px;">
+  <div style="background-color: lightblue; padding: 20px;">Flex Item 1</div>
+  <div style="background-color: lightgreen; padding: 20px;">Flex Item 2</div>
+  <div style="background-color: lightcoral; padding: 20px;">Flex Item 3</div>
+</div>
+
+grid----	Makes the element a grid container for grid-based layouts.
+Common Usage: Complex two-dimensional layouts.
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; background-color: lightgray; padding: 10px;">
+  <div style="background-color: lightblue; padding: 20px;">Grid Item 1</div>
+  <div style="background-color: lightgreen; padding: 20px;">Grid Item 2</div>
+  <div style="background-color: lightcoral; padding: 20px;">Grid Item 3</div>
+</div>
+
+inline-flex-----	Similar to flex, but behaves like inline.
+Common Usage: Inline containers with flexible child elements.
+<div style="display: inline-flex; background-color: lightgray; gap: 10px; padding: 10px;">
+  <div style="background-color: lightblue; padding: 20px;">Inline-Flex Item 1</div>
+  <div style="background-color: lightgreen; padding: 20px;">Inline-Flex Item 2</div>
+</div>
+<span>Text next to inline-flex container.</span>
+
+inline-grid-----	Similar to grid, but behaves like inline.
+Common Usage: Small grid-based layouts inline with text.
+<div style="display: inline-grid; grid-template-columns: 1fr 1fr; gap: 5px; background-color: lightgray; padding: 10px;">
+  <div style="background-color: lightblue; padding: 10px;">Item 1</div>
+  <div style="background-color: lightgreen; padding: 10px;">Item 2</div>
+</div>
+<span>Inline text next to the grid.</span>
+
+
+not necessary
+table----	Makes the element behave like a table (like an HTML <table>).
+Common Usage: Custom table-like layouts.
+<div style="display: table; border: 2px solid black; width: 100%;">
+  <div style="display: table-row;">
+    <div style="display: table-cell; border: 1px solid black; padding: 10px;">Row 1, Cell 1</div>
+    <div style="display: table-cell; border: 1px solid black; padding: 10px;">Row 1, Cell 2</div>
+  </div>
+  <div style="display: table-row;">
+    <div style="display: table-cell; border: 1px solid black; padding: 10px;">Row 2, Cell 1</div>
+    <div style="display: table-cell; border: 1px solid black; padding: 10px;">Row 2, Cell 2</div>
+  </div>
+</div>
+
+----------------------------------------------------------------------------
+What is the Alpha Channel in CSS? / opacity
+The alpha channel in CSS controls the transparency or opacity of a color. It defines how opaque or transparent an element should appear, with values ranging from 0 (completely transparent) to 1 (completely opaque).
+
+background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent red */
+
+-------------------------------------------------------------------------------------
+
+
+What is the position Property in CSS?
+The position property in CSS determines how an element is positioned in the document and how it interacts with other elements. It defines the element’s position relative to its parent, its containing block, or the viewport.
+
+Values of position
+static----	Default positioning. The element is positioned based on the normal document flow (no special positioning).
+ <div style="position: static; background-color: lightblue; padding: 10px;">
+    Static: Positioned according to normal document flow.
+  </div>
+
+relative----	The element is positioned relative to its normal position.
+  <div style="position: relative; top: 20px; left: 30px; background-color: lightgreen; padding: 10px;">
+    Relative: Moved 20px down and 30px right from its normal position.
+  </div>
+
+absolute----	The element is positioned relative to the nearest positioned ancestor (relative, absolute, or fixed).
+  <div style="position: relative; background-color: lightgray; padding: 20px;">
+    Relative Container
+    <div style="position: absolute; top: 10px; left: 10px; background-color: lightcoral; padding: 10px;">
+      Absolute: Positioned 10px down and 10px right relative to the container.
+    </div>
+  </div>
+
+fixed----	The element is positioned relative to the viewport (it doesn't move when scrolling).
+ <div style="position: fixed; top: 20px; left: 20px; background-color: lightpink; padding: 10px;">
+    Fixed: Stays at the top-left corner of the viewport, even when scrolling.
+  </div>
+  <div style="margin-top: 2000px;">Scroll down to see how the fixed box doesn't move.</div>
+
+
+sticky----	The element toggles between relative and fixed based on the scroll position.
+  <div style="height: 1500px;">
+    <div style="position: sticky; top: 0; background-color: lightyellow; padding: 10px;">
+      Sticky: Sticks to the top of the viewport when scrolled down.
+    </div>
+    <p>Scroll down to see the sticky behavior.</p>
+  </div>
+
+------------------------------------------------------------------------------------------
+What is z-index in CSS?
+The z-index property in CSS controls the stacking order of elements on a web page. It determines which element appears on top when multiple elements overlap. Higher z-index values are displayed in front of lower z-index values.
+
+ <div style="position: absolute; top: 50px; left: 50px; width: 100px; height: 100px; background-color: lightblue; z-index: 1;">
+    Box 1
+  </div>
+  <div style="position: absolute; top: 100px; left: 100px; width: 100px; height: 100px; background-color: lightcoral; z-index: 2;">
+    Box 2
+  </div>
+
+  ------------------------------------------------------------------------------
+
+  What is the background-image Property in CSS?
+The background-image property in CSS is used to set an image as the background of an element. It allows you to enhance the visual appeal of web pages by displaying images behind content or elements.
+Property Values
+cover:
+
+The background image is scaled to completely cover the container.
+The image maintains its aspect ratio, but it may get cropped if the container’s aspect ratio is different.
+Use Case: Full-screen or hero section backgrounds.
+contain:
+
+The background image is scaled to fit entirely inside the container.
+The image maintains its aspect ratio and is fully visible, but it may not fill the entire container.
+Use Case: Displaying the full image without cropping.
+auto:
+
+Default behavior. The background image is displayed at its original size.
+Use Case: When the image size matches the design requirements.
+no-repeat (with background-repeat):
+
+Prevents the image from repeating.
+Use Case: Avoid tiled backgrounds for single images.
+
+
+background-image: url('image-path');
+    .cover {
+      width: 400px;
+      height: 200px;
+      background-image: url('https://via.placeholder.com/800x400');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 2px solid black;
+    }
+---------------------------------------------------------------------------------
+What is Flexbox in CSS?
+The Flexible Box Layout (commonly called Flexbox) is a CSS layout model designed to help arrange and align items within a container efficiently, even if their sizes are dynamic. Flexbox makes it easy to align items both horizontally and vertically and distribute space dynamically.
+
+1. Properties for Flex Containers
+display: flex;
+Meaning: Turns the container into a flexbox, enabling flex properties for its children.
+Example:
+
+
+
+justify-content
+Meaning: Aligns items horizontally inside the container:
+flex-start (default): Items stick to the left.
+flex-end: Items stick to the right.
+center: Items are centered.
+space-between: Items have equal space between them.
+space-around: Items have equal space around them.
+space-evenly: Items have equal space everywhere.
+
+Example:
+
+<div style="display: flex; justify-content: space-between; background-color: lightgray;">
+  <div style="background-color: lightblue; padding: 10px;">Item 1</div>
+  <div style="background-color: lightgreen; padding: 10px;">Item 2</div>
+  <div style="background-color: lightcoral; padding: 10px;">Item 3</div>
+</div>
+
+
+align-items
+Meaning: Aligns items vertically inside the container:
+stretch (default): Items stretch to match the container height.
+flex-start: Items align at the top.
+flex-end: Items align at the bottom.
+center: Items align in the middle.
+baseline: Items align along their text baseline.
+Example:
+
+<div style="display: flex; align-items: center; height: 100px; background-color: lightgray;">
+  <div style="background-color: lightblue; padding: 10px;">Item 1</div>
+  <div style="background-color: lightgreen; padding: 10px;">Item 2</div>
+</div>
+
+flex-wrap
+Meaning: Decides whether items should wrap to the next line:
+nowrap (default): Items stay on one line.
+wrap: Items wrap to the next line.
+wrap-reverse: Items wrap to the next line in reverse order.
+Example:
+
+<div style="display: flex; flex-wrap: wrap; width: 200px; background-color: lightgray;">
+  <div style="background-color: lightblue; padding: 10px;">Item 1</div>
+  <div style="background-color: lightgreen; padding: 10px;">Item 2</div>
+  <div style="background-color: lightcoral; padding: 10px;">Item 3</div>
+</div>
+gap
+Meaning: Specifies the space between items.
+Example:
+
+<div style="display: flex; gap: 10px; background-color: lightgray;">
+  <div style="background-color: lightblue; padding: 10px;">Item 1</div>
+  <div style="background-color: lightgreen; padding: 10px;">Item 2</div>
+</div>
+
+2. Properties for Flex Items
+flex-grow
+Meaning: Controls how much an item should grow compared to others.
+Default is 0 (no growth).
+Example:
+
+<div style="display: flex; background-color: lightgray;">
+  <div style="background-color: lightblue; flex-grow: 1; padding: 10px;">Item 1</div>
+  <div style="background-color: lightgreen; padding: 10px;">Item 2</div>
+</div>
+
+flex-shrink
+Meaning: Controls how much an item should shrink compared to others.
+Default is 1 (items shrink if necessary).
+Example:
+
+<div style="display: flex; width: 200px; background-color: lightgray;">
+  <div style="background-color: lightblue; flex-shrink: 1; padding: 10px;">Item 1</div>
+  <div style="background-color: lightgreen; flex-shrink: 2; padding: 10px;">Item 2</div>
+</div>
+
+align-self
+Meaning: Aligns a specific item vertically, overriding align-items.
+Values: auto, stretch, flex-start, flex-end, center, baseline.
+Example:
+
+<div style="display: flex; align-items: center; height: 100px; background-color: lightgray;">
+  <div style="background-color: lightblue; padding: 10px;">Item 1</div>
+  <div style="background-color: lightgreen; align-self: flex-start; padding: 10px;">Item 2</div>
+</div>
+
+--------------------------------------------------------------------------------------
+Media queries :
+Media queries in CSS are a feature that allows you to apply styles based on the characteristics of the user's device, such as its screen size, resolution, orientation, or other properties. Media queries are essential for building responsive designs that adapt to various screen sizes and devices.
+
+Common Media Features
+Feature	Description	Example
+max-width	Maximum width of the viewport.	@media (max-width: 600px)
+min-width	Minimum width of the viewport.	@media (min-width: 768px)
+
+<style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      /* Responsive paragraph */
+      .responsive-text {
+        text-align: center;
+        margin: 10px 20px;
+        font-size: 18px;
+        color: #333;
+      }
+      .boxx {
+        font-size: 14px;
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        border: 2px solid #333; /* Adds a solid border with a dark gray color */
+      }
+
+      .box {
+        font-size: 14px;
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        border: 2px solid #333; /* Adds a solid border with a dark gray color */
+      }
+      /* Non-responsive paragraph */
+      .normal-text {
+        text-align: center;
+        margin: 10px 20px;
+        font-size: 18px; /* This will stay constant */
+        color: #333;
+      }
+
+      /* Media query for small screens */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 24px;
+        }
+        .responsive-text {
+          font-size: 14px;
+        }
+        .box{
+          background-color:red;
+        }
+        .boxx{
+          display: none;
+        }
+      }
+
+      /* Media query for medium screens */
+      @media (min-width: 601px) and (max-width: 1024px) {
+        h1 {
+          font-size: px;
+        }
+        .responsive-text {
+          font-size: 30px;
+        }
+        .box{
+          background-color:green;
+        }
+        .boxx{
+          background-color:green;
+        }
+      }
+
+      /* Media query for large screens */
+      @media (min-width: 1025px) {
+        h1 {
+          font-size: 36px;
+        }
+        .responsive-text {
+          font-size: 36px;
+        }
+        .box {
+          background-color:blue
+        }
+        .boxx {
+          background-color:blue
+        }
+      }
+    </style>
+
+    <body>
+    <h1>Responsive vs Non-Responsive Text</h1>
+
+    <p class="responsive-text">
+      This is a responsive paragraph. Its font size will change based on screen
+      size. Try resizing your browser window!
+    </p>
+
+    <p class="normal-text">
+      This is a non-responsive paragraph. Its font size will stay the same
+      regardless of screen size. Compare it with the paragraph above!
+    </p>
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="boxx">Box 3</div>
+  </body>
+
+  ===================================================================================
+Transitions
+  
+Transitions in CSS are a powerful way to create smooth and interactive animations. You can animate various properties and even apply them to entire elements using the all keyword for general animations.
+
+Basic Syntax for Transitions:
+
+selector {
+  property: value;
+  transition: property duration timing-function delay;
+}
+property: The CSS property you want to animate (e.g., background-color, width, opacity).
+duration: How long the transition will take (e.g., 0.5s or 300ms).
+timing-function: The speed curve of the transition (e.g., ease, linear, ease-in-out).
+delay: How long to wait before the transition starts (e.g., 0s or 500ms).
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Target Specific Div</title>
+    <style>
+      /* Base styling for all divs */
+      div {
+        height: 100px;
+        width: 100px;
+        background-color: aquamarine;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        color: black;
+      }
+
+      /* Styling for the first div */
+      .box1 {
+        transition-property: background-color, font-size;
+        transition-duration: 2s, 1s;
+        transition-timing-function: ease-in, ease-out;
+        transition-delay: 1s, 0s;
+         /* transition: background-color 2s ease-in 1s, font-size 2s ease-in  */
+      }
+
+      .box1:hover {
+        background-color: blue; /* Animates over 2s with 1s delay */
+        font-size: 20px; /* Animates over 1s with no delay */
+        color: red;
+      }
+
+      /* Styling for the second div */
+      .box2 {
+        transition: background-color 1s ease-in-out, transform 1.5s ease;
+      }
+
+      .box2:hover {
+        background-color: green;
+        transform: rotate(90deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">hi</div>
+    <div class="box2">hello</div>
+  </body>
+</html>
+
+
+=========================================================================
+
+transfor 2d and 3d
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2D and 3D Rotation</title>
+    <style>
+      body {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .box2D,
+      .box3D {
+        height: 100px;
+        width: 100px;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        color: black;
+      }
+
+      /* 2D Rotation */
+      .box2D {
+        background-color: aquamarine;
+        transition: transform 1s ease-in-out, background-color 1s ease-in-out;
+      }
+
+      .box2D:hover {
+        background-color: lightcoral;
+        transform: rotate(45deg); /* 45-degree clockwise rotation */
+      }
+
+      /* 3D Rotation */
+      .box3D {
+        background-color: aquamarine;
+        perspective: 500px; /* Adds depth for 3D transformation */
+        transition: transform 1.5s ease-in-out, background-color 1s ease-in-out;
+      }
+
+      .box3D:hover {
+        background-color: lightgreen;
+        transform: rotateY(180deg); /* 180-degree rotation along Y-axis */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box2D">2D</div>
+    <div class="box3D">3D</div>
+  </body>
+</html>
+ ===============================================================================
+
+ scale transformation in CSS:
+
+In CSS, scale is a transformation function that changes the size of an element. It is part of the transform property and can scale an element along both the X and Y axes. The scale function allows you to increase or decrease the size of an element without affecting its layout or surrounding content.
+
+Values:
+scale(1): No scaling (the element's original size).
+scale(2): Scales the element to twice its original size.
+scale(0.5): Scales the element to half its original size.
+scale(2, 1): Scales the element 2 times in width and 1 time in height (no change in height).
+scale(1, 2): Scales the element 1 time in width (no change) and 2 times in height.
+
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scale Example</title>
+    <style>
+      .box {
+        height: 100px;
+        width: 100px;
+        background-color: lightblue;
+        border: 2px solid blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        color: black;
+        transition: transform 0.5s ease; /* Smooth scaling effect */
+      }
+
+      .box:hover {
+        transform: scale(1.5); /* Scale up to 1.5 times its original size */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">Hover Me!</div>
+  </body>
+</html>
+===============================================================================
+The translate transformation in CSS moves an element along the X and/or Y axes without affecting its surrounding elements. This is part of the transform property.
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Translate Example</title>
+    <style>
+      .box {
+        height: 100px;
+        width: 100px;
+        background-color: lightcoral;
+        border: 2px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 16px;
+        transition: transform 0.5s ease; /* Smooth transition effect */
+      }
+
+      .box:hover {
+        transform: translate(50px, 50px); /* Moves the box 50px right and 50px down */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">Hover Me!</div>
+  </body>
+</html>
+==================================================================================
+skew
+The skew transformation in CSS distorts an element by tilting it along the X-axis, Y-axis, or both. It is part of the transform property and is used to create a shearing effect.
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skew Example</title>
+    <style>
+      .box {
+        height: 100px;
+        width: 100px;
+        background-color: lightblue;
+        border: 2px solid blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        color: black;
+        transition: transform 0.5s ease; /* Smooth transition effect */
+      }
+
+      .box:hover {
+        transform: skew(20deg, 10deg); /* Tilts 20 degrees on X-axis and 10 degrees on Y-axis */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">Hover Me!</div>
+  </body>
+</html>
+
+================================================================================
+
+In CSS, @keyframes is used to define animations by specifying a series of intermediate steps (called "keyframes") that describe how an element should change throughout the animation. This allows you to create smooth, complex animations by defining the starting point, intermediate points, and final state of the animation
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skew Example</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      img {
+        height: 100px;
+        width: 100px; /* Optional: set width for consistent sizing */
+        animation: spin 3s linear infinite; /* Apply the animation */
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg); /* Full rotation */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img src="/assets/wheel.jpg" alt="Wheel" />
+  </body>
+</html>
+=====================================================================================
+Example with Color Transition:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skew Example</title>
+    <style>
+     @keyframes colorChange {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: green;
+  }
+}
+div {
+  width: 100px;
+  height: 100px;
+  animation: colorChange 3s ease-in-out infinite; /* Apply the animation */
+}
+    </style>
+  </head>
+  <body>
+    
+   <div>hello</div>
+  </body>
+</html>
+
+
+
+
+================================================================================
+Example with Multiple Stages:
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skew Example</title>
+    <style>
+  @keyframes moveAndColorChange {
+  0% {
+    left: 0;
+    background-color: red;
+  }
+  50% {
+    left: 200px;
+    background-color: yellow;
+  }
+  100% {
+    left: 0;
+    background-color: green;
+  }
+}
+
+div {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  animation: moveAndColorChange 4s ease-in-out infinite;
+}
+
+    </style>
+  </head>
+  <body>
+    
+   <div>hello</div>
+  </body>
+</html>
+======================================================================================
+with out trafic light
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Animation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      overflow: hidden;
+      
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-image: url('/assets/road.jpg'); /* Path to your background image */
+      background-size: cover; /* Make sure the image covers the entire screen */
+      background-repeat: no-repeat; /* Prevent the image from repeating */
+      background-position: center center; /* Center the image */
+    
+    }
+
+    .animation-container {
+      position: relative;
+      width: 100%;
+      height: 250px;
+    }
+
+    .car {
+      position: absolute;
+      bottom: -80px;
+      display: flex;
+      align-items: center;
+      animation: moveCar 5s linear infinite;
+      color: red;
+    }
+
+    .car img {
+      display: block;
+    }
+
+    .car-body {
+      height: 350px;
+      width: 350px;
+      margin: 0 10px; /* Space between the wheels */
+    }
+
+    .car-wheel {
+      height: 60px;
+      width: 60px;
+      animation: rotateWheel 1s linear infinite;
+      position: relative;
+    }
+
+    /* Adjust wheel positions */
+    .front-wheel {
+      margin-left: -91px; 
+      margin-top: 60px;/* Align front wheel closer to the front of the car */
+    }
+
+    .back-wheel {
+      margin-right: -117px;
+      margin-top: 60px; /* Align back wheel closer to the rear of the car */
+    }
+
+    @keyframes moveCar {
+      0% {
+        left: -250px;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+
+    @keyframes rotateWheel {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body >
+  <div class="animation-container">
+    <div class="car">
+      <!-- Back Wheel -->
+      <img src="/assets/car-wheel.svg" class="car-wheel back-wheel" />
+      <!-- Car Body -->
+      <img src="/assets/car.svg" class="car-body" />
+      <!-- Front Wheel -->
+      <img src="/assets/car-wheel.svg" class="car-wheel front-wheel" />
+    </div>
+  </div>
+</body>
+</html>
+========================================================================================
+
+with trafic light
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Animation with Traffic Light</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      overflow: hidden;
+      background-image: url('/assets/road.jpg'); /* Path to your background image */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+
+    .animation-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+    }
+
+    /* Traffic Light */
+    .traffic-light {
+      position: absolute;
+      top: 20px;
+      left: 90%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      background: #333;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .light {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #ccc;
+      animation: lightAnimation 6s infinite;
+    }
+
+    /* Red and Green Lights */
+    .light.red {
+      background-color: red;
+    }
+    .light.green {
+      background-color: green;
+    }
+  
+    @keyframes lightAnimation {
+      0%, 100% {
+        background-color: green;
+      }
+
+   
+      10% {
+        background-color: red;
+      }
+      
+    }
+
+    /* Car Movement */
+    .car {
+      position: absolute;
+      bottom: -80px;
+      display: flex;
+      align-items: center;
+      animation: moveCar 6s infinite;
+    }
+
+    .car img {
+      display: block;
+    }
+
+    .car-body {
+      height: 350px;
+      width: 350px;
+      margin: 0 10px;
+    }
+
+    .car-wheel {
+      height: 60px;
+      width: 60px;
+      animation: rotateWheel 1s linear infinite;
+      position: relative;
+    }
+
+    .front-wheel {
+      margin-left: -91px;
+      margin-top: 60px;
+    }
+
+    .back-wheel {
+      margin-right: -117px;
+      margin-top: 60px;
+    }
+
+    @keyframes rotateWheel {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Car Movement based on Traffic Light */
+    @keyframes moveCar {
+      0%, 100% {
+        left: -300px; /* The car starts off-screen to the left (stop at red light) */
+      }
+      50% {
+        left: 0; /* Car is stopped at red light */
+      }
+      100% {
+        left: 100%; /* Car moves to the right (green light) */
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="animation-container">
+    <!-- Traffic Light -->
+    <div class="traffic-light">
+      <div class="light"></div> <!-- Single div for the traffic light -->
+    </div>
+
+    <!-- Car -->
+    <div class="car">
+      <!-- Back Wheel -->
+      <img src="/assets/car-wheel.svg" class="car-wheel back-wheel" />
+      <!-- Car Body -->
+      <img src="/assets/car.svg" class="car-body" />
+      <!-- Front Wheel -->
+      <img src="/assets/car-wheel.svg" class="car-wheel front-wheel" />
+    </div>
+  </div>
+</body>
+</html>
+
+=======================================================================================
+inline styleling
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Animation</title>
+  <style>
+    @keyframes moveCar {
+      0% {
+        left: -250px;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+
+    @keyframes rotateWheel {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body 
+  style="
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    background-image: url('/assets/road.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  "
+>
+  <div 
+    class="animation-container" 
+    style="
+      position: relative;
+      width: 100%;
+      height: 250px;
+    "
+  >
+    <div 
+      class="car" 
+      style="
+        position: absolute;
+        bottom: -80px;
+        display: flex;
+        align-items: center;
+        animation: moveCar 5s linear infinite;
+      "
+    >
+      <!-- Back Wheel -->
+      <img 
+        src="/assets/car-wheel.svg" 
+        class="car-wheel back-wheel" 
+        style="
+          height: 60px;
+          width: 60px;
+          animation: rotateWheel 1s linear infinite;
+          margin-right: -117px;
+          margin-top: 60px;
+        " 
+      />
+      <!-- Car Body -->
+      <img 
+        src="/assets/car.svg" 
+        class="car-body" 
+        style="
+          height: 350px;
+          width: 350px;
+          margin: 0 10px;
+        " 
+      />
+      <!-- Front Wheel -->
+      <img 
+        src="/assets/car-wheel.svg" 
+        class="car-wheel front-wheel" 
+        style="
+          height: 60px;
+          width: 60px;
+          animation: rotateWheel 1s linear infinite;
+          margin-left: -91px;
+          margin-top: 60px;
+        " 
+      />
+    </div>
+  </div>
+</body>
+</html>
+============================================================================================================
+
+CSS Grid is a powerful layout system in CSS that allows you to create complex, responsive, and flexible grid-based layouts with minimal effort. It is designed for 2D layouts, meaning it can handle both rows and columns simultaneously.
+
+The grid container properties are applied to the parent element that has display: grid or display: inline-grid. These properties define the overall structure of the grid, such as the number of rows and columns, spacing, and alignment.
+
+2. grid-template-columns
+Defines the number and size of columns in the grid.
+
+Values:
+Lengths (e.g., px, %, em).
+Fractional units (fr).
+auto: Adjust based on content size.
+repeat(): Repeat patterns of columns.
+
+.container {
+  grid-template-columns: 1fr 2fr 1fr; /* Three columns: 1 fraction, 2 fractions, 1 fraction */
+}
+----------------------------------------
+3. grid-template-rows
+Defines the number and size of rows in the grid.
+
+Values: Same as grid-template-columns.
+.container {
+  grid-template-rows: 100px auto 50px; /* Three rows: fixed height, automatic, fixed height */
+}
+-----------------------------------------------------
+4. gap (or grid-gap)
+Defines the spacing between rows and columns.
+
+Values:
+gap: Sets spacing between both rows and columns.
+row-gap: Spacing between rows.
+column-gap: Spacing between columns.
+
+.container {
+  gap: 10px; /* Space between rows and columns */
+  row-gap: 20px; /* Space between rows */
+  column-gap: 15px; /* Space between columns */
+}
+----------------------------------------------------------
+justify-items
+Aligns grid items horizontally within their grid cells.
+
+Values:
+start: Align to the start of the cell.
+end: Align to the end of the cell.
+center: Center-align items.
+stretch (default): Stretch items to fill the cell.
+
+.container {
+  justify-items: center; /* Horizontally center items */
+}
+
+--------------------------------------------------------
+8. align-items
+Aligns grid items vertically within their grid cells.
+
+Values: Same as justify-items.
+.container {
+  align-items: start; /* Align items to the top of cells */
+}
+
+-------------------------------------------------
+9. justify-content
+Aligns the entire grid horizontally within the grid container.
+
+Values:
+start: Align the grid to the start of the container.
+end: Align the grid to the end of the container.
+center: Center the grid.
+space-between: Distribute items with space between them.
+space-around: Distribute items with space around them.
+space-evenly: Equal space between and around items.
+
+.container {
+  justify-content: space-evenly; /* Equal horizontal spacing for the grid */
+}
+--------------------------------------------------------------
+11. grid-auto-rows and grid-auto-columns
+Defines the size of rows and columns for items that are placed implicitly (not explicitly defined in grid-template).
+
+.container {
+  grid-auto-rows: 100px; /* Default height for implicit rows */
+  grid-auto-columns: 50px; /* Default width for implicit columns */
+}
+
+
+
+======================================================================================
+Grid Child Items
+
+In CSS Grid, the grid child items are the direct children of a grid container. These items are placed into the grid's rows and columns according to the grid container's properties or their own specific rules.
+
+Key Properties for Grid Child Items
+grid-column: Specifies the column(s) an item spans. 
+ex
+grid-column: 1 / 3; /* Spans columns 1 to 2 */       grid-column: 3; /* Placed in column 3 */
+
+grid-row: Specifies the row(s) an item spans.
+grid-row: 1 / 3     grid-column: 3.
+
+grid-area: Assigns a grid area name or specifies both grid-column and grid-row together.
+ grid-area: 3 / 2 / 4 / 4; /* Spans from row 3 to 4 and column 2 to 4 */
+
+justify-self: Aligns a grid item horizontally within its grid cell.
+align-self: Aligns a grid item vertically within its grid cell.
+place-self: Shorthand for align-self and justify-self.
+========================================================================================================
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bubble Animation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-image: url("/assets/ocen2.jpg"); /* Use relative path */
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+      }
+
+      .bubbles {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        bottom: -110vh;
+        justify-items: center;
+        align-items: center;
+        justify-content: space-around;
+      }
+
+      .bubbles img {
+        width: 50px;
+        height: 50px;
+        animation: bubble 7s linear infinite;
+        opacity: 2;
+      }
+
+      @keyframes bubble {
+        0% {
+          transform: translateY(0);
+          opacity: 0;
+        }
+        30% {
+          opacity: 2;
+        }
+        100% {
+          transform: translateY(-80vh);
+          opacity: 0;
+        }
+      }
+
+      .bubbles img:nth-child(1) {
+        animation-delay: 1s;
+        width: 20px;
+        height: 20px;
+      }
+      .bubbles img:nth-child(2) {
+        animation-delay: 7s;
+        width: 13px;
+        height: 13px;
+      }
+      .bubbles img:nth-child(3) {
+        animation-delay: 3s;
+        width: 20px;
+        height: 20px;
+      }
+      .bubbles img:nth-child(4) {
+        animation-delay: 8s;
+        width: 20px;
+        height: 20px;
+      }
+      .bubbles img:nth-child(5) {
+        animation-delay: 5s;
+        width: 15px;
+        height: 15px;
+      }
+      .bubbles img:nth-child(6) {
+        animation-delay: 1s;
+        width: 24px;
+        height: 24px;
+      }
+      .bubbles img:nth-child(7) {
+        animation-delay: 4s;
+        width: 14px;
+        height: 14px;
+      }
+      .bubbles img:nth-child(8) {
+        animation-delay: 3s;
+        width: 10px;
+        height: 10px;
+      }
+      .bubbles img:nth-child(9) {
+        animation-delay: 2s;
+        width: 30px;
+        height: 30px;
+      }
+      .bubbles img:nth-child(10) {
+        animation-delay: 6s;
+        width: 10px;
+        height: 10px;
+      }
+      .bubbles img:nth-child(11) {
+        animation-delay: 3s;
+        width: 18px;
+        height: 18px;
+      }
+      .bubbles img:nth-child(12) {
+        animation-delay: 1s;
+        width: 20px;
+        height: 20px;
+      }
+      .bubbles img:nth-child(13) {
+        animation-delay: 4s;
+        width: 14px;
+        height: 14px;
+      }
+      .bubbles img:nth-child(14) {
+        animation-delay: 5s;
+        width: 10px;
+        height: 10px;
+      }
+      .bubbles img:nth-child(15) {
+        animation-delay: 2s;
+        width: 18px;
+        height: 18px;
+      }
+      .bubbles img:nth-child(16) {
+        animation-delay: 6s;
+        width: 10px;
+        height: 10px;
+      }
+      .bubbles img:nth-child(17) {
+        animation-delay: 3s;
+        width: 18px;
+        height: 18px;
+      }
+      .bubbles img:nth-child(18) {
+        animation-delay: 8s;
+        width: 20px;
+        height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bubbles">
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+      <img src="/assets/bubble.png" alt="bubble" />
+    </div>
+  </body>
+</html>

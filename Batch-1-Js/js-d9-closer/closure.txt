@@ -1,0 +1,312 @@
+Closer
+Closer  allows variables outside of the scope of a function to be accessed. Usually, a closure is created when a function is defined in another function, allowing the inner function to access variables in the outer one. 
+
+The Concept
+Calling the Outer Function: When you call outerFunction(), it does not immediately run the inner function. Instead, it returns the inner function (but not the result of the inner function — just the function itself).
+
+Storing the Inner Function: By storing that inner function in a variable (like closureFunction), we can use it later whenever we want to execute it.
+
+function outerFunction() {
+    let outerVariable = "I am from the outer scope";
+
+    function innerFunction() {
+        console.log(outerVariable); // Accessing the outer variable
+    }
+
+    return innerFunction;
+}
+
+const closureFunction = outerFunction(); // Creates a closure
+closureFunction(); // "I am from the outer scope"
+
+function createRecipe() {
+  let secretSpice = "Cayenne Pepper"; // The secret spice (variable)
+  let ingredients=["chicken","oil","onion"]
+  secretSpice="abc"
+  // This function "remembers" the secret spice when it's called later
+  return function serveDish() {
+     return console.log("This dish has " + ingredients.join(",") + " " +secretSpice+" as a ingredient!");
+  };
+}
+
+const myRecipe = createRecipe();  // Create the recipe (recipe remembers the secret spice)
+myRecipe();  // Outputs: "This dish has Cayenne Pepper as a secret ingredient!"
+
+
+------------------------------------------------------
+function greet() {
+    let name = "John"; // Outer function variable
+
+    function sayHello() { // Inner function
+        console.log("Hello, " + name); // Accessing 'name' from the outer function
+    }
+
+    return sayHello; // Return the inner function
+}
+console.log(greet())
+const greetJohn = greet(); // 'greet' runs and returns 'sayHello'
+greetJohn(); // Output: "Hello, John"
+
+===========================================================================================
+Hosting
+In JavaScript, Hoisting is the default behavior of moving all the declarations at the top of the scope before code execution. Basically, it gives us an advantage that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local 
+var a  //declaration
+x=v //assignment or initialization
+valuehosting: calling function before initialization
+
+hosting()
+
+function hosting(){
+    console.log("hello")
+}
+
+----------------------------------------------------
+
+declaration Hoisting:
+var a;
+
+function greet() {
+  console.log(a);
+}
+
+greet()
+a = "hello";
+
+
+=================================================================================
+
+prototype:
+In JavaScript, prototypes are a powerful feature that allow objects to share properties and methods.
+
+let parent = {
+  name: "Jones",
+  age: 30,
+  city: "mumbai",
+  area: "Bhandra",
+};
+
+let child = {
+  name: "Baby",
+  age: 12,
+};
+
+Object.setPrototypeOf(child, parent);
+Object.setPrototypeOf(child, parent);
+Object.prototype.phoneNo = 12345678;  // making universal
+console.log(child.phoneNo);
+---------------------------------------------------------
+Simple Explanation of prototype in Functions
+function Person(name, age) {
+    this.name = name; // Instance property
+    this.age = age;   // Instance property
+}
+
+// Adding a method to the prototype
+Person.prototype.greet = function () {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+};
+
+// Creating objects using the constructor function
+const person1 = new Person("Alice", 25);
+const person2 = new Person("Bob", 30);
+
+person1.greet(); // Output: Hello, my name is Alice and I am 25 years old.
+person2.greet(); // Output: Hello, my name is Bob and I am 30 years old.
+--------------------------------------------------------------------------
+const robotPrototype = {
+    walk: function () {
+      console.log("Robot is walking");
+    },
+    talk: function () {
+      console.log("Robot is talking");
+    }
+  };
+  
+  // Create new robots that use the prototype
+  const robot1 = Object.create(robotPrototype);
+  const robot2 = Object.create(robotPrototype);
+  
+  robot1.walk(); // "Robot is walking" (borrowed from the prototype)
+  robot1.talk(); // "Robot is talking" (borrowed from the prototype)
+==============================================================================
+Call/apply/bind
+in JavaScript, we cannot use the other object properties and methods 
+so to overcome this restriction we can use cal apply and bind
+
+in call we can tie a function into an object as if it belonged to the object.
+
+The apply() method does the exact same as call(). The difference is that call() accepts an argument list, but apply() accepts an array of arguments.
+
+In bind instead of executing a function immediately, bind() returns a function that can be executed later on.
+
+Call example var obj = { num: 2 };
+	
+	function add(a, b){
+	  return this.num + a + b;
+	}
+	
+	console.log(add.call(obj, 3, 5));
+Output 10
+
+apply example
+var obj = { num: 2 };
+	
+	function add(a, b){
+	  return this.num + a + b;
+	}
+	
+	console.log(add.apply(obj, [3, 5]));
+
+
+	
+bind 
+var obj = { num: 2 };
+	
+	function add(a, b){
+	  return this.num + a + b;
+	}
+	
+	const func = add.bind(obj, 3, 5);
+	func();
+
+call apply bind
+var obj = { num: 2 };
+	
+	function add(a, b){
+	  return this.num + a + b;
+	}
+	
+	const resultCall  = add.call(obj, 3, 5);
+	const resultApply = add.apply(obj, [3, 5]);
+	const funcBind    = add.bind(obj, 3, 5)
+	const resultBind  = funcBind();
+	
+	console.log(resultCall, resultApply, resultBind);
+
+Event Bubbling
+Event bubbling is a type of event propagation where the event first triggers on the innermost target element, and then successively triggers on the ancestors (parents) of the target element in the same nesting hierarchy till it reaches the outermost DOM element or document object (Provided the handler is initialized).
+
+Promise
+ A Promise is an object that represents the eventual resolve or reject of an asynchronous operation, and its resulting value
+
+
+async and await
+
+Inside an async function, you can use the await keyword before a call to a function that returns a promise. This makes the code wait at that point until the promise is settled, at which point the fulfilled value of the promise is treated as a return value, or the rejected value is thrown.
+================================================================================
+Ex:2
+function UserInfo(fName, sName, age, city, favMovies) {
+    this.fName = fName;
+    this.sName = sName;
+    this.age = age;
+    this.city = city;
+    this.favMovies = favMovies;
+  
+    this.salary = function () {
+      return 90000;
+    };
+  
+    this.fullName = function () {
+      return this.fName + this.sName;
+    };
+  }
+  
+  const user = new UserInfo("baby", "john", 20, "mumbai", ["rrr", 22, "abc", "zcx"]);
+console.log({
+  ...user,
+  salary: user.salary(),
+  fullName: user.fullName(),
+});
+Task: Create a Simple Library System
+What You’ll Create:
+You will write JavaScript code to simulate a library system. This system will:
+
+Store genres: Keep track of all the unique genres (like Fiction, Non-Fiction, Science, etc.) of the books added to the library.
+Manage a list of books: Store details about the books, including their title, author, and genre.
+Add books: Create a function to add new books to the library.
+Find books by genre: Create a function to find and display all books belonging to a specific genre.
+
+const genres = new Set(); // To store unique genres
+const books = []; // To store the list of books
+
+// Function to add a book
+function addBook(title, author, genre) {
+  books.push({ title, author, genre }); // Add the book object
+  genres.add(genre); // Add the genre to the Set
+  console.log(`Book "${title}" by ${author} added under genre "${genre}".`);
+}
+
+// Function to get books by genre
+function getBooksByGenre(genre) {
+  const booksInGenre = books.filter(book => book.genre === genre);
+  if (booksInGenre.length === 0) {
+    console.log(`No books found in the genre "${genre}".`);
+    return;
+  }
+  console.log(`Books in the genre "${genre}":`);
+  booksInGenre.forEach(book => {
+    console.log(`- "${book.title}" by ${book.author}`);
+  });
+}
+
+// Adding books to the library
+addBook("1984", "George Orwell", "Dystopian");
+addBook("To Kill a Mockingbird", "Harper Lee", "Fiction");
+addBook("Brave New World", "Aldous Huxley", "Dystopian");
+addBook("The Great Gatsby", "F. Scott Fitzgerald", "Fiction");
+
+// Displaying books by genre
+getBooksByGenre("Dystopian");
+getBooksByGenre("Romance");
+
+
+function Library() {
+  const genres = new Set(); // To store unique genres
+  const books = []; // To store the list of books
+
+  // Method to add a book
+  const addBook = function (title, author, genre) {
+    books.push({ title, author, genre });
+    genres.add(genre); // Add the genre to the Set
+    console.log(`Book "${title}" by ${author} added under genre "${genre}".`);
+  };
+
+  // Method to get books by genre
+  const getBooksByGenre = function (genre) {
+    const booksInGenre = books.filter(book => book.genre === genre);
+    if (booksInGenre.length === 0) {
+      console.log(`No books found in the genre "${genre}".`);
+      return [];
+    }
+    console.log(`Books in the genre "${genre}":`);
+    booksInGenre.forEach(book => {
+      console.log(`- "${book.title}" by ${book.author}`);
+    });
+    return booksInGenre;
+  };
+
+  // Method to display all genres
+  const displayGenres = function () {
+    console.log("Available genres:");
+    genres.forEach(genre => console.log(`- ${genre}`));
+  };
+
+  // Return the functions to make them accessible
+  return {
+    addBook,
+    getBooksByGenre,
+    displayGenres,
+  };
+}
+
+// Example Usage:
+const myLibrary = Library();
+
+myLibrary.addBook("1984", "George Orwell", "Dystopian");
+myLibrary.addBook("To Kill a Mockingbird", "Harper Lee", "Fiction");
+myLibrary.addBook("Brave New World", "Aldous Huxley", "Dystopian");
+myLibrary.addBook("The Great Gatsby", "F. Scott Fitzgerald", "Fiction");
+
+myLibrary.displayGenres(); // Display all genres
+myLibrary.getBooksByGenre("Dystopian"); // List books in the Dystopian genre
+myLibrary.getBooksByGenre("Romance"); // No books found in this genre

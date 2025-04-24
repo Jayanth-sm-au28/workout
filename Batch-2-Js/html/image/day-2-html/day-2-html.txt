@@ -1,0 +1,224 @@
+Structure in html:
+
+A page layout in HTML refers to the structure and arrangement of elements on a webpage. It involves organizing the content into sections like headers, footers, sidebars, and the main content area,
+
+1. Semantic Elements
+Semantic elements clearly describe their purpose and content, making the structure of the webpage more meaningful for both developers and browsers. They improve accessibility and SEO.
+
+<header>	Defines a header section for a document or section. takes full width
+<nav>	Represents a block of navigation links.
+<section>	Defines a thematic grouping of content, often with a heading.
+<article>	Represents self-contained content, such as a blog post or news article.takes full width
+<aside>	Defines content related to the main content, like a sidebar.
+<footer>	Defines a footer for a document or section.takes full width
+<main>	Specifies the main content of the document.
+
+
+
+2. Non-Semantic Elements
+Non-semantic elements do not convey any specific meaning about their content. They are used for general-purpose layout and styling.
+
+Examples:
+Element	Description
+<div>	A generic container used to group elements for styling or scripting.takes full width
+<span>	A generic inline container for styling or scripting.
+
+===========================================================================
+
+ how open link in new tab
+<a href="https://www.google.com/" target="_main">google</a>
+
+=============================================================================
+how to make images clickable
+<a href="https://www.google.com/" target="_main"><img src=""alt="google" height="20px" width="80px"/></a>
+
+====================================================================================
+
+<div>:
+The <div> tag in HTML is a block-level element that is often used as a container for grouping together other elements and applying styles or handling layout. It's one of the most common tags in HTML because it helps structure a page without adding any semantic meaning (unlike <header>, <section>, <article>, etc.).
+
+Key Characteristics of the <div> Tag:
+Block-level element: A <div> takes up the full width of its parent container by default, meaning it will occupy the entire horizontal space available unless otherwise specified.
+Non-semantic: It doesn't convey any meaning about its content. It's purely used for styling, grouping, or layout purposes.
+Commonly used for Layout and Styling: It is a "box" element used to group content, and you can apply CSS styles (like borders, background colors, margins, etc.) to it.
+
+=====================================================================================
+
+span tag:
+span is also a container used for other html elementsnote take width as per size
+====================================================================================
+
+Lists in HTML:
+list are used to represent real list data 
+
+Unordered List (<ul>):Definition: A list where the order of items doesn’t matter. It’s typically represented with bullet points.and we can use nested lists
+<ul>
+  <li>Apple</li>
+  <li>Banana</li>
+  <li>Orange</li>
+</ul>
+
+ Ordered List (<ol>)
+Definition: A list where the order of items does matter. It’s typically represented with numbers or letters.
+<ol>
+  <li>First step</li>
+  <li>Second step</li>
+  <li>Third step</li>
+</ol>
+
+=================================================================================
+
+
+Tables in HTML
+HTML tables are used to display data in a tabular format. A table consists of rows and columns, where data is organized into cells.
+
+Basic Structure of a Table:
+A simple HTML table is created using the following tags:
+
+<table>: Defines the table itself.
+<tr>: Defines a table row.
+<th>: Defines a table header cell (bold and centered by default).
+<td>: Defines a table data cell (normal content)
+
+
+ <table>
+    <caption>Employee Information</caption>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Age</th>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>Manager</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>Jane</td>
+      <td>Developer</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>Mike</td>
+      <td>Designer</td>
+      <td>28</td>
+    </tr>
+  </table>
+
+
+
+---------------------------------------------------------
+Explanation of Form Elements:
+Text Input:
+
+<input type="text"> is used for plain text fields like names.
+Includes placeholder to show an example value inside the input box.
+Email Input:
+
+<input type="email"> ensures the user enters a valid email format.
+Password Input:
+
+<input type="password"> hides the input value with dots or asterisks.
+Number Input:
+
+<input type="number"> restricts the input to numeric values.
+Radio Buttons:
+
+<input type="radio"> allows users to select one option from a group (e.g., gender).
+All radio buttons in a group must share the same name attribute.
+Checkboxes:
+
+<input type="checkbox"> allows users to select multiple options (e.g., hobbies).
+Select Dropdown:
+
+<select> creates a dropdown menu.
+<option> defines the items in the dropdown.
+Textarea:
+
+<textarea> creates a multi-line input field for longer text.
+Submit Button:
+
+<button type="submit"> submits the form data to the server.
+A label in HTML is used to associate descriptive text with a specific form input element. The <label> tag improves the accessibility and usability of forms, as it allows users (including those using screen readers) to identify what each input field represents.
+
+Attributes:
+
+id: Connects labels to inputs for accessibility.
+class: Used for styling with CSS.
+placeholder: Provides hints or example text inside input fields.
+name: Identifies the input's name in the submitted data.
+Required Fields:
+
+Use required to make inputs mandatory.
+Form Validation:
+
+Browsers automatically validate certain inputs like email and number.
+
+<form action="/submit" method="POST">
+    <!-- Text Input -->
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your full name" class="form-input" required>
+
+    <!-- Email Input -->
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" class="form-input" required>
+
+    <!-- Password Input -->
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" class="form-input" required>
+
+    <!-- Number Input -->
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" placeholder="Enter your age" class="form-input">
+
+    <!-- Radio Buttons -->
+    <label>Gender</label>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label>
+
+    <!-- Checkboxes -->
+    <label>Hobbies</label>
+    <input type="checkbox" id="hobby1" name="hobbies" value="reading">
+    <label for="hobby1">Reading</label>
+    <input type="checkbox" id="hobby2" name="hobbies" value="traveling">
+    <label for="hobby2">Traveling</label>
+    <input type="checkbox" id="hobby3" name="hobbies" value="sports">
+    <label for="hobby3">Sports</label>
+
+    <!-- Select Dropdown -->
+    <label for="country">Country</label>
+    <select id="country" name="country" class="form-select" required>
+      <option value="">Select your country</option>
+      <option value="india">India</option>
+      <option value="usa">USA</option>
+      <option value="uk">UK</option>
+      <option value="canada">Canada</option>
+    </select>
+
+    <!-- Textarea -->
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" placeholder="Write your message here"></textarea>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+  </form>
+
+
+  ====================================================
+
+What is an <iframe>?
+The <iframe> (short for inline frame) is an HTML element used to embed another HTML document or web page within a web page. It creates a "frame" inside your webpage where external content like a website, video, 
+
+Attributes:
+controls
+height
+width
+loop
+autoplay
+
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/6bg5tM2jmUU?si=NSVmquYBsWGZqwBK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.google.com/"></iframe>
+      <iframe width="560" height="315" src="https://www.wikipedia.com/"></iframe>

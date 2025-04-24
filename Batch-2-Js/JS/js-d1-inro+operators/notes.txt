@@ -1,0 +1,382 @@
+// 1 What is java script and how it works:
+// Js is a  interpretated/ synchronoys , client side, event based, single thread object oriented scripting language used for web application,
+
+
+// 2 What make javascript unique and use case:
+
+// Support to all type of browser, js have own frame work for servr side
+// Complex things are easily done for ex typing and event based 
+// Full integration with html and css
+
+// Java script is case sensitive
+
+
+// 3 Java script frameworks and Library
+
+
+// Framework
+// •	A framework is a structured collection of tools, components, and rules that provides a foundation to build software applications.
+
+// •	It defines the architecture and dictates the flow of control  meaning you work within the framework
+// •	Example: React, Angular, vue.js, node,js
+	
+// •	A framework, on the other hand, is like building a model home. You have a set of blueprints and a few limited choices when it comes to architecture and design. Ultimately, the contractor and blueprint are in control. And they will let you know when and where you can provide your input.
+
+// -------------------------------------------------------------------
+// Library
+// •	A library is a collection of pre-written code snippets or functions that developers can use to solve specific problems without starting from scratch.
+
+// •	You call the library whenever needed, and you control the flow of your program.
+// 	Example: Lodash, jQuery, NumPy, TensorFlow, etc.
+
+// •	A library is like going to Ikea. You already have a home, but you need a bit of help with furniture. You don’t feel like making your own table from scratch. Ikea allows you to pick and choose different things to go in your home. You are in control.
+
+
+
+// ==================================================================================
+// Variables
+// what is variables
+// Rules of variables
+// Types of variable     
+
+
+// what is variables 
+// Variables are used to store the data and represent any data types
+
+// Always give variable proprer name
+
+// // Types of variable     
+// // Var, let, const
+
+// var :
+// 1) The scope of a var variable is functional scope.
+var x = 18
+function example() {
+    if (true) {
+        var x = 10;
+    }
+    console.log(x); // 10 (accessible outside the block)
+}
+example();
+console.log(x); 
+// 2) It can be updated and re-declared into the scope.
+var x = 5;
+var x = 10; // Re-declared
+x = 15; // Updated
+console.log(x); // 15
+
+// 3) It can be declared without initialization.
+var x;
+console.log(x); // undefined
+
+// 4) It can be accessed without initialization as its default value is “undefined”.
+console.log(x); // undefined
+var x = 10;
+
+// 5) hoisting done , with initializing as ‘default’ value
+console.log(x); // undefined
+var x = 10;
+
+
+// let:
+// 1) The scope of a let variable is block scope.
+if (true) {
+    let y = 20;
+}
+console.log(y); // Error: y is not defined (y is only inside the block)
+
+// 2) It can be updated but cannot be re-declared into the scope.
+let ay = 5;
+// let y = 10; // Error: Cannot redeclare
+ay = 15; // Updated
+console.log(y); // 15
+
+// 3) It can be declared without initialization.
+let by;
+console.log(y); // undefined
+
+// 4) It can be accessed without initialization as its default value is “undefined”.
+console.log(y); // Error: Cannot access 'y' before initialization
+let cy = 10;
+
+// 5) Hoisting is done , but not initialized (this is the reason for error when we access the let variable before declaration/initialization)
+
+
+// var:
+// 1) The scope of a let variable is block scope.
+if (true) {
+    const z = 30;
+}
+console.log(z); // Error: z is not defined
+
+// 2) It cannot be updated or re-declared into the scope.
+const z = 50;
+// z = 60; // Error: Assignment to constant variable
+// const z = 70; // Error: Cannot redeclare
+
+// 3) It cannot be declared without initialization.
+const nz; // Error: Missing initializer
+
+// 4) It cannot be accessed without initialization, as it cannot be declared without initialization
+console.log(z); // Error: Cannot access 'z' before initialization
+const bz = 10;
+
+// 5) Hoisting is done , but not initialized (this is the reason for error when we access the let variable before declaration/initialization)
+
+// ===================================================================================
+// Declaration:
+// Declaring a variable means creating it without assigning a value.
+var x;  // Declared but not assigned any value
+
+// Initialization:
+// Assigning a value to a declared variable.
+x = 10;  // Initializing variable x
+
+// ===================================================================================
+// Rules of Declaring Variable names
+// 1) can have chacters
+// 2) can have numbers except firstletter
+// 3) can use only two special symbol _ & $
+// 4) no space between variable name
+// 5) cant use reserve key words
+// 6) Snake casing : Words are separated using an underscore (_).
+//  & camel caseing : The first word is lowercase, and each following word starts with an uppercase letter.
+
+// ========================================================================================
+// Data types
+
+// Definition of Data Types in JavaScript
+// A data type in JavaScript defines the type of value a variable can hold. It determines how the data is stored, accessed, and manipulated in a program.
+
+
+// Primitive Data Types: (fixed values, stored directly in memory).
+// These are immutable and stored directly in memory.
+// ex:String, Number, BigInt, Boolean, Undefined, Null, Symbol
+// 1.	String
+// 	Represents a sequence of characters.
+// 	Example: "Hello, World!", 'JavaScript'
+
+// 2.	Number
+// 	Represents both integers and floating-point numbers.
+// 	Example: 42, 3.14, -10
+
+// 3.	BigInt (introduced in ES11)
+// 	Represents integers beyond the safe range of Number.
+// 	Example: 123456789012345678901234567890n
+
+// 4.	Boolean
+	// Represents a logical value: either true or false.
+	// Example: true, false
+	let isSunny = true; // Assigning a Boolean value 
+	let isRaining = false; 
+	console.log(isSunny); // Output: true 
+	console.log(isRaining); // Output: false
+
+	let isLoggedIn = true;
+	
+	if (isLoggedIn) {
+	  console.log("Welcome, user!");  // This will execute because isLoggedIn is true
+	} else {
+	  console.log("Please log in.");
+	}
+// True is 1 false is 0 for ex
+// Let s = true
+// Console.log(s+5)
+
+// 5.	Undefined
+// 	Represents a variable that has been declared but not assigned a value.
+// 	Example:
+let x; 
+console.log(x); // Output: undefined
+
+// 6.	Null
+// o	Represents an intentional absence of any object value.
+	// Example:
+let y = null; 
+console.log(y); // Output: null
+
+
+// -------------------------------------------------------------------------------------
+
+// Non-Primitive Data Type :  (complex structures, stored as references).
+// This type stores references to objects.
+// 1.	Object
+	// Represents a collection of key-value pairs.
+	// Example:
+
+let person = { name: "John", age: 30 };
+console.log(person.name); // Output: John
+
+
+	// Arrays, functions, and dates are also types of objects in JavaScript:
+// 	Array: An ordered list of values string or number
+// Example: [1, 2, 3]
+	// Function: A reusable block of code.
+// Example:
+function greet() {
+  return "Hello!";
+}
+// 	Date: Represents dates and times.
+// Example: new Date()
+
+// How to check the datatypes by using type of
+ let checkDataType = 30
+ console.log(typeof checkDataType)
+
+// ----------------------------------------------------------------------------------------
+// Type Conversion & Coercion in JavaScript
+
+// Converting a data type manually using JavaScript methods like String(), Number(), Boolean(), etc.
+// •	String Conversion
+
+let num = 123;
+console.log(typeof num); // Output: "number"
+
+let str = String(num); // Convert to string
+console.log(str);       // Output: "123"
+console.log(typeof str); // Output: "string"
+
+// •	Number Conversion
+
+let str = "456";
+console.log(typeof str); // Output: "string"
+
+let num = Number(str); // Convert to number
+console.log(num);       // Output: 456
+console.log(typeof num); // Output: "number"
+
+// •	Boolean Conversion
+
+console.log(Boolean(1));        // Output: true (1 is truthy)
+console.log(Boolean(0));        // Output: false (0 is falsy)
+console.log(Boolean("hello"));  // Output: true (non-empty string is truthy)
+console.log(Boolean(""));       // Output: false (empty string is falsy)
+// ________________________________________
+
+// 2. Type Coercion :
+// JavaScript automatically converts one data type to another during an operation.
+// 
+// •	String Coercion When a number is added to a string, JavaScript converts the number into a string:
+
+let result = "The number is " + 42;
+console.log(result); // Output: "The number is 42"
+console.log(typeof result); // Output: "string"
+
+
+// •	Number Coercion When a string is used in a mathematical operation, JavaScript tries to convert it to a number:
+
+
+// let result = "10" - 2; // "10" is coerced to 10
+// console.log(result); // Output: 8
+// console.log(typeof result); // Output: "number"
+
+// let result2 = "10" * 2;
+// console.log(result2); // Output: 20
+
+// •	Boolean Coercion JavaScript converts values to true or false in logical operations:
+
+console.log(!!"hello"); // Output: true (non-empty string is truthy)
+console.log(!!0);       // Output: false (0 is falsy)
+console.log(!!null);    // Output: false
+// ________________________________________
+// Key Examples Showing Differences
+// Adding Strings and Numbers
+
+let a = "5";
+let b = 3;
+
+console.log(a + b); // Output: "53" (String Coercion)
+console.log(Number(a) + b); // Output: 8 (Explicit Conversion)
+
+// ================================================================================
+// Strings and templete literals .
+// . Template Literals (Template Strings)
+// Template literals (introduced in ES6) allow for easier string concatenation using backticks (`) and ${} for embedding expressions inside strings.
+// Example:
+
+let firstName = "John";
+let lastName = "Doe";
+let fullName = `${firstName} ${lastName}`;
+
+console.log(fullName); // Output: "John Doe"
+
+// ====================================================================================
+
+// Operators:
+// Operators in JavaScript are symbols or keywords used to perform operations on values (operands). They can be used for calculations, comparisons, logical operations, assignments, etc.
+
+// 1. Arithmetic Operators
+// Used for basic mathematical operations.
+// 	+ (Addition): Adds two values.
+// javascript
+// Copy code
+let a = 5, b = 3;
+console.log(a + b); // Output: 8
+
+// (Subtraction): Subtracts the second value from the first.
+
+let a = 5, b = 3;
+console.log(a - b); // Output: 2
+
+// * (Multiplication): Multiplies two values.
+
+let a = 5, b = 3;
+console.log(a * b); // Output: 15
+
+// / (Division): Divides the first value by the second.
+
+let a = 6, b = 3;
+console.log(a / b); // Output: 2
+
+
+// % (Modulus): Returns the remainder when the first value is divided by the second.
+
+let a = 5, b = 3;
+console.log(a % b); // Output: 2
+
+
+// ++ (Increment): Increases the value by 1.
+
+let a = 5;
+a++;
+console.log(a); // Output: 6
+
+
+// -- (Decrement): Decreases the value by 1.
+
+let a = 5;
+a--;
+console.log(a); // Output: 4
+// ________________________________________
+
+// 2. Assignment Operators
+// Used to assign values to variables.
+// =: Assigns a value to a variable.
+
+let a = 5;
+console.log(a); // Output: 5
+
+// +=: Adds the right operand to the left operand and assigns the result.
+
+let a = 5;
+a += 3; // Equivalent to a = a + 3
+console.log(a); // Output: 8
+
+// -=: Subtracts the right operand from the left operand and assigns the result.
+
+let a = 5;
+a -= 3; // Equivalent to a = a - 3
+console.log(a); // Output: 2
+
+// *=: Multiplies the left operand by the right operand and assigns the result.
+
+let a = 5;
+a *= 3; // Equivalent to a = a * 3
+console.log(a); // Output: 15
+
+
+// /=: Divides the left operand by the right operand and assigns the result.
+
+let a = 6;
+a /= 3; // Equivalent to a = a / 3
+console.log(a); // Output: 2

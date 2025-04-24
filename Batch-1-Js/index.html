@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal Finder</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    "
+  >
+    <!-- Sidebar for Categories -->
+    <div
+      class="sidebar"
+      style="
+        width: 150px;
+        background-color: #f8f9fa;
+        padding: 4px;
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: none;
+      "
+    >
+      <h3 style="margin-bottom: 20px; text-align: center">Categories</h3>
+      <div id="categoriesList"></div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="content" style="flex: 1; padding: 20px; overflow-y: auto">
+      <div class="searchBar" style="margin-bottom: 20px; text-align: center">
+        <input
+          type="text"
+          placeholder="Search Here"
+          id="searchInput"
+          style="padding: 8px; margin-right: 10px; width: 200px"
+        />
+        <button id="searchBtn" style="padding: 8px; cursor: pointer">
+          Search
+        </button>
+      </div>
+
+      <div
+        id="showMeal"
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 20px;
+        "
+      ></div>
+    </div>
+
+    <!-- Modal for Meal Details -->
+    <div
+      id="mealModal"
+      class="modal"
+      style="
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        width: 90%;
+        max-width: 500px;
+        max-height: 80vh;
+        overflow-y: auto;
+      "
+    >
+      <h2
+        id="mealName"
+        style="margin-bottom: 15px; font-size: 1.5rem; text-align: center"
+      ></h2>
+      <img
+        id="mealImage"
+        src=""
+        alt=""
+        style="
+          width: 50px;
+          height: 50px;
+          border-radius: 5px;
+          margin-bottom: 15px;
+        "
+      />
+      <h6
+        id="mealInstructions"
+        style="
+          margin: 10px 0;
+          font-size: 1rem;
+          line-height: 1.5;
+          text-align: justify;
+        "
+      ></h6>
+      <button
+        onclick="closeModal()"
+        style="
+          display: block;
+          margin: 20px auto 0;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+        "
+      >
+        Close
+      </button>
+    </div>
+
+    <div
+      id="overlay"
+      class="overlay"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      "
+      onclick="closeModal()"
+    ></div>
+
+    <script>
+      // Summary of Key Query Parameters:
+      // c: Represents category (e.g., c=Beef).
+      // s: Represents search term (e.g., s=Chicken).
+      // i: Represents meal ID (e.g., i=53049).
+      // random.php: Fetches a random meal (no query parameters).
+
+      // categories.php: Fetches all categories (no query parameters).
+      // api 1
+      // const url = `https://www.themealdb.com/api/json/v1/1/categories.php`;
+      // post man https://www.themealdb.com/api/json/v1/1/categories.php
+
+      // api2
+      // const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
+      // https://www.themealdb.com/api/json/v1/1/filter.php?c=Dessert
+
+      // api 3
+      // https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal};
+
+      // api 4
+      // const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`;
+
+      // step 1-----Function to fetch meal categories and display them in the sidebar
+      const getCategories = async () => {
+        try {
+          // API endpoint to get all meal categories
+          const url = `https://www.themealdb.com/api/json/v1/1/categories.php`;
+          const response = await fetch(url); // Fetch data from API
+          const data = await response.json(); // Convert response to JSON format
+          console.log(data, "Fetched categories for the sidebar");
+
+          // Check if data contains categories before displaying
+          if (data.categories) {
+            displayCategories(data.categories); // Call function to display categories
+          } else {
+            document.getElementById("categoriesList").innerHTML =
+              "<p>No categories found!</p>";
+          }
+        } catch (error) {
+          document.getElementById(
+            "categoriesList"
+          ).innerHTML = `<p style="color: red;">${error.message}</p>`;
+        }
+      };
+
+      // Function to display categories as buttons in the sidebar
+      const displayCategories = (categories) => {
+        const categoriesList = document.getElementById("categoriesList");
+        categoriesList.innerHTML = ""; // Clear previous content
+
+        // Loop through each category and create a button
+        categories.forEach((category) => {
+          const button = document.createElement("button"); // Create button element
+          button.innerHTML = category.strCategory; // Set button text to category name
+          button.classList.add("category-button"); // Add class to button
+
+          // Style the category button
+          button.style.margin = "4px";
+          button.style.padding = "4px";
+          button.style.backgroundColor = "#007bff";
+          button.style.color = "white";
+          button.style.border = "none";
+          button.style.borderRadius = "5px";
+          button.style.cursor = "pointer";
+          button.style.width = "100%";
+          button.style.textAlign = "center";
+
+          // Add click event listener to fetch meals for the selected category
+          button.addEventListener("click", () => {
+            getMealsByCategory(category.strCategory);
+          });
+
+          categoriesList.appendChild(button); // Add button to sidebar
+        });
+      };
+
+      // Function to fetch meals based on selected category
+      const getMealsByCategory = async (category) => {
+        try {
+          const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
+          const response = await fetch(url);
+          const data = await response.json();
+          console.log(data, "Fetched meals by category");
+
+          // Check if meals exist in the category
+          if (data.meals) {
+            displayMeals(data.meals); // Call function to display meals
+          } else {
+            document.getElementById("showMeal").innerHTML =
+              "<h3>No meals found in this category!</h3>";
+          }
+        } catch (error) {
+          document.getElementById(
+            "showMeal"
+          ).innerHTML = `<h3 style="color: red;">${error.message}</h3>`;
+        }
+      };
+
+      // Function to display meals in the main content area
+      const displayMeals = (meals) => {
+        const showMealContainer = document.getElementById("showMeal");
+        showMealContainer.innerHTML = ""; // Clear previous meals
+
+        // Loop through each meal and create a card
+        meals.forEach((meal) => {
+          const div = document.createElement("div"); // Create div for meal card
+          div.classList.add("card");
+
+          // Style the meal card
+          div.style.border = "1px solid #ccc";
+          div.style.padding = "10px";
+          div.style.margin = "10px";
+          div.style.borderRadius = "8px";
+          div.style.textAlign = "center";
+          div.style.boxShadow = "0px 2px 5px rgba(0, 0, 0, 0.1)";
+
+          // Set the meal content inside the div
+          div.innerHTML = `
+            <img src="${meal.strMealThumb}" alt="${meal.strMeal}" style="width: 100px; height: 100px; border-radius: 5px;" />
+            <h5>${meal.strMeal}</h5>
+            <button class="read-more-button" style="background-color: #007bff; color: white; border: none; padding: 8px; border-radius: 5px; cursor: pointer; font-size: 10px; margin-top: 10px; transition: background-color 0.3s ease;" onclick="getMealDetails(${meal.idMeal})">Read More</button>
+        `;
+
+          showMealContainer.appendChild(div); // Add meal card to container
+        });
+      };
+
+      // Function to fetch and display detailed meal information
+      const getMealDetails = async (idMeal) => {
+        try {
+          const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+          const response = await fetch(url);
+          const data = await response.json();
+          console.log("Fetched meal details", data);
+
+          // Check if meal details are available
+          if (data.meals) {
+            const meal = data.meals[0]; // Get first meal from array
+            document.getElementById("mealName").textContent = meal.strMeal; // Set meal name
+            document.getElementById("mealImage").src = meal.strMealThumb; // Set meal image
+            document.getElementById("mealInstructions").textContent =
+              meal.strInstructions; // Set meal instructions
+
+            // Show the modal with meal details
+            document.getElementById("mealModal").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+          }
+        } catch (error) {
+          alert("Failed to fetch meal details!");
+        }
+      };
+
+      // Function to close the meal details modal
+      const closeModal = () => {
+        document.getElementById("mealModal").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+      };
+
+      // Function to search meals by name
+      const getFoodMenu = async (value) => {
+        try {
+          const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${value}`;
+          const response = await fetch(url);
+          const data = await response.json();
+
+          // Check if meals are found
+          if (data.meals) {
+            displayMeals(data.meals); // Display search results
+          } else {
+            document.getElementById("showMeal").innerHTML =
+              "<h3>No meals found!</h3>";
+          }
+        } catch (error) {
+          document.getElementById(
+            "showMeal"
+          ).innerHTML = `<h3 style="color: red;">${error.message}</h3>`;
+        }
+      };
+
+      // Event listener for search button click
+      const searchInput = document.getElementById("searchInput");
+      const searchBtn = document.getElementById("searchBtn");
+      searchBtn.addEventListener("click", function () {
+        const searchValue = searchInput.value.trim(); // Get user input
+        if (searchValue === "") {
+          alert("Enter a value to search!"); // Show alert if empty
+        } else {
+          getFoodMenu(searchValue); // Perform search
+        }
+      });
+
+      // Load categories when the page loads
+      window.onload = getCategories;
+    </script>
+  </body>
+</html>

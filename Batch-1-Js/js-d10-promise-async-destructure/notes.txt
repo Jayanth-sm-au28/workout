@@ -1,0 +1,697 @@
+
+
+Destructuring in JavaScript
+Destructuring is a feature introduced in ES6 (ECMAScript 2015) that allows you to extract values from arrays or properties from objects into distinct variables. This syntax provides a clean and concise way to access and assign values.
+Basic Syntax:
+const [variable1, variable2, ...rest] = array;
+
+Extracting Values:
+const numbers = [10, 20, 30, 40];
+const [first, second] = numbers;
+console.log(first); // 10
+console.log(second); // 20
+
+Skipping Values:
+const numbers = [10, 20, 30, 40];
+const [, , third] = numbers; // Skipping the first two values
+console.log(third); // 30
+
+Using Default Values:
+const numbers = [10];
+const [first, second = 20] = numbers; // second gets a default value
+console.log(first); // 10
+console.log(second); // 20
+
+Rest Pattern in Arrays:
+const numbers = [10, 20, 30, 40];
+const [first, ...rest] = numbers;
+console.log(first); // 10
+console.log(rest); // [20, 30, 40]
+
+Nested Destructuring
+const numbers = [10, [20, 30]];
+const [first, [second, third]] = numbers;
+console.log(second); // 20
+console.log(third); // 30
+
+----------------------------------------------------------------------
+
+2. Object Destructuring :note: u have to give same name as property name if u want to coustamize the variable name  for that renaming
+Basic Syntax:
+const { key1, key2, ...rest } = object;
+
+Extracting Properties:
+const person = { name: "John", age: 25 };
+const { name, age } = person;
+console.log(name); // John
+console.log(age); // 25
+
+
+Using Default Values:
+const person = { name: "John" };
+const { name, age = 30 } = person; // age gets a default value
+console.log(age); // 30
+
+Renaming Variables:
+const person = { name: "John", age: 25 };
+const { name: fullName, age: years } = person;
+console.log(fullName); // John
+console.log(years); // 25
+
+
+Rest Pattern in Objects:
+const person = { name: "John", age: 25, city: "New York" };
+const { name, ...rest } = person;
+console.log(name); // John
+console.log(rest); // { age: 25, city: "New York" }
+
+Nested Destructuring
+const person = {
+    name: "John",
+    address: {
+        city: "New York",
+        zip: 10001,
+    },
+};
+
+const {
+    address: { city, zip },
+} = person;
+console.log(city); // New York
+console.log(zip); // 10001
+
+-------------------------------------------------------------
+4. Function Parameter Destructuring
+
+With Objects:
+function display({ name, age }) {
+    console.log(`Name: ${name}, Age: ${age}`);
+}
+
+const person = { name: "John", age: 25 };
+display(person); // Name: John, Age: 25
+
+##########################################################
+
+With Arrays:
+EXAMPLE 1:
+function sum([a, b]) {
+    return a + b;
+}
+
+console.log(sum([10, 20])); // 30
+-----------------------------------------------------
+example:2 Returning and Destructuring an Array
+
+Use Case: when we want to extract values from a function that returns an array.
+
+What happens here?
+
+The user function returns an array: ["john", 20, "goa"].
+This array is destructured into variables name, age, and city using the array destructuring
+
+function user(){
+    return["john",20,"goa"]
+}
+console.log(user())
+let [name,age,city]= user()
+console.log(name,age,city)
+---------------------------------------------------
+EXAMPLE 3 Destructuring in Function Parameters
+
+Use Case: when we pass an array to a function and want to work directly with its elements inside the function.
+
+What happens here?
+The user function accepts an array as its parameter.
+Using destructuring directly in the function's parameter list, it extracts the array's elements into variables name, age, and city:
+
+function user([name,age,city]){
+    console.log(name,age,city)
+    }
+    user(["james",20,"mumbai"])
+
+==========================================================================
+
+revision of syncronus and asycronus and call back  and
+async await ----- promise-------call back
+
+synchronous 
+
+console.log("Step 1: ");
+console.log("Step 2: ");
+console.log("Step 3: ");
+console.log("Step 4: ");
+console.log("Step 5: ");
+console.log("Step 6:");
+
+
+asynchronous.
+
+console.log("Step 1"); // First, you need bread
+console.log("Step 2"); // Then, spread peanut butter
+
+setTimeout(() => {
+  console.log("Step 3"); // Simulate some delay for spreading jelly
+}, 2000);
+
+console.log("Step 4"); // Finally, make the sandwich
+console.log("Step 5");
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+asynchronous and callback hell
+console.log("Step 1");
+
+setTimeout(() => {
+  console.log("Step 2");
+  
+  setTimeout(() => {
+    console.log("Step 3");
+    setTimeout(() => {
+      console.log("Step 4");
+      
+      setTimeout(() => {
+        console.log("Step 5");
+      }, 1000);
+      
+    }, 1000);
+  }, 1000);
+}, 1000);
+console.log("Step 10")
+
+
+-------------------------------------------------------------------------------
+callback: is a function passed as an arugument to another function
+Example:
+function fullName(firstName, secondName) {
+  console.log(firstName + " " + secondName); // Concatenate variables with a space
+}
+
+function userName(firstName, secondName, sumCallback) {
+  sumCallback(firstName, secondName); // Call the callback with arguments
+}
+
+// Pass the arguments as strings
+userName("Baby", "John", fullName);
+----
+#EXAMPLE 2 USING SETTIMEOUT
+const greet = ()=>{
+    console.log("Good Morning")
+}
+setTimeout(greet,3000)
+
+-----------------------------------------------------------------
+
+What is Callback Hell?
+Callback hell happens in JavaScript when you have too many nested callbacks, making the code hard to read, understand, and maintain.
+
+function processOrder(orderId, nextOrder) {
+  setTimeout(() => {
+    console.log(`Processed order ${orderId}`);
+    if (nextOrder) {
+      nextOrder();
+    }
+  }, 2000);
+}
+
+processOrder(1, () => {
+  processOrder(2, () => {
+    processOrder(3, () => {
+      processOrder(4, () => {
+        processOrder(5);
+      });
+    });
+  });
+});
+
+
+-------------------------------------------------------------
+function logIn(userId, nextStep) {
+    setTimeout(() => {
+      console.log(`User ${userId} logging in...`);
+      if (nextStep) {
+        nextStep();
+      }
+    }, 2000);
+  }
+  
+  function chooseSubscription(userId, nextStep) {
+    setTimeout(() => {
+      console.log(`User ${userId} choosing subscription...`);
+      if (nextStep) {
+        nextStep();
+      }
+    }, 2000);
+  }
+  
+  function setPreferences(userId, nextStep) {
+    setTimeout(() => {
+      console.log(`User ${userId} setting preferences...`);
+      if (nextStep) {
+        nextStep();
+      }
+    }, 2000);
+  }
+  
+  function confirmPayment(userId, nextStep) {
+    setTimeout(() => {
+      console.log(`User ${userId} confirming payment...`);
+      if (nextStep) {
+        nextStep();
+      }
+    }, 2000);
+  }
+  
+  function completeSignup(userId) {
+    setTimeout(() => {
+      console.log(`User ${userId} has successfully completed the signup process!`);
+    }, 2000);
+  }
+  
+  // Using nested callbacks to chain tasks:
+  logIn(1, () => {
+    chooseSubscription(1, () => {
+      setPreferences(1, () => {
+        confirmPayment(1, () => {
+          completeSignup(1);
+        });
+      });
+    });
+  });
+  
+=============================================================================
+SO we promise is introduce to solve this issue
+
+A Promise in JavaScript is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises allow us to handle asynchronous operations more cleanly and avoid callback hell, which is common with nested callbacks.
+
+Why use promises?
+1 Avoid callback hell (where you have too many nested functions and it gets messy).
+2 Handle asynchronous actions (like fetching data from a website) in a more structured and readable way.
+
+Visualizing the states of a promise:
+Pending: The promise is still being processed.
+Resolved: The promise was successful, and you got the result.
+Rejected: The promise failed, and you got an error.
+
+example:
+let promise = new Promise((resolve,reject)=>{
+console.log("am Promise")
+resolve("sucessful")
+})
+------------------------------------------------------------
+using then and catch block
+
+const fetchData = () => {
+  return new Promise((resolve, reject) => {
+    const success = false; // Simulate success or failure
+
+    success ? resolve("Data loaded!") : reject("Error loading data.");
+  });
+};
+
+fetchData()
+  .then((result) => console.log("Resolved:", result))
+  .catch((error) => console.log("Rejected:", error));
+
+  -----------------------------------------------------------------------------------------
+  // Simulate two promises
+const fetchData1 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const success = true; // Simulate success or failure
+      success ? resolve("Data from API 1 loaded!") : reject("Error loading data from API 1.");
+    }, 1000); // Simulate delay of 1 second
+  });
+};
+
+const fetchData2 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const success = true; // Simulate success or failure
+      success ? resolve("Data from API 2 loaded!") : reject("Error loading data from API 2.");
+    }, 1500); // Simulate delay of 1.5 seconds
+  });
+};
+
+// Execute both promises at the same time
+Promise.all([fetchData1(), fetchData2()])
+  .then((results) => {
+    // This will run if both promises resolve successfully
+    console.log("All promises resolved:", results);
+  })
+  .catch((error) => {
+    // This will run if any promise rejects
+    console.log("One of the promises failed:", error);
+  });
+
+  ----------------------------------------------------------------------
+  promise chaining:
+  Promise chaining is a powerful technique in JavaScript for handling asynchronous operations in a sequential manner. It involves chaining .then() methods to execute a series of tasks where the output of one task is passed as input to the next.
+  // Step 1: Boil water
+function boilWater() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("Water is boiled!");
+      resolve("Boiled Water"); // Pass the boiled water to the next step
+    }, 1000);
+  });
+}
+
+// Step 2: Brew tea
+function brewTea(water) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(`Tea is brewed using ${water}!`);
+      resolve("Brewed Tea"); // Pass the brewed tea to the next step
+    }, 1000);
+  });
+}
+
+// Step 3: Serve tea
+function serveTea(tea) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(`Tea is served: ${tea}`);
+      resolve("Enjoy your tea!");
+    }, 1000);
+  });
+}
+
+// Chaining the Promises
+boilWater()
+  .then((boiledWater) => brewTea(boiledWater)) // Step 2: Brew tea with boiled water
+  .then((brewedTea) => serveTea(brewedTea))    // Step 3: Serve the brewed tea
+  .then((message) => console.log(message))     // Final message
+  .catch((error) => console.error("Error:", error)); // Handle any errors
+
+Explanation:
+boilWater:
+
+Returns a Promise that resolves after 1 second, indicating the water is boiled.
+The resolved value is "Boiled Water".
+brewTea:
+
+Takes the boiled water as input and returns a Promise that resolves after 1 second, indicating the tea is brewed.
+The resolved value is "Brewed Tea".
+serveTea:
+
+Takes the brewed tea as input and returns a Promise that resolves after 1 second, indicating the tea is served.
+The resolved value is "Enjoy your tea!".
+Chaining:
+
+The result of one Promise is passed to the next:
+Boiled water → Brew tea → Serve tea.
+The .then() blocks handle each step in sequence.
+Error Handling:
+
+If any step fails, the .catch() block handles the error.
+
+-----------------------------------------------------------------------------------------------------------
+What are async and await?
+async:
+
+Used to define a function that returns a Promise.
+The function automatically wraps its return value in a Promise.
+await:
+
+Used to pause the execution of an async function until the Promise is resolved.
+Makes asynchronous code look synchronous and easier to read.
+
+// Step 1: Boil water
+function boilWater() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Water is boiled!");
+      resolve("Boiled Water");
+    }, 1000);
+  });
+}
+
+// Step 2: Brew tea
+function brewTea(water) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Tea is brewed using ${water}.`);
+      resolve("Brewed Tea");
+    }, 1000);
+  });
+}
+
+// Step 3: Serve tea
+function serveTea(tea) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`Tea is served: ${tea}`);
+      resolve("Enjoy your tea!");
+    }, 1000);
+  });
+}
+
+async function makeTea() {
+  try {
+    const water = await boilWater();
+    const tea = await brewTea(water);
+    const message = await serveTea(tea);
+    console.log(message);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+=====================================================================================
+weather app
+  <style>
+        body {
+            /* font-family: Arial, sans-serif; */
+            text-align: center;
+            background-color: #cbee59b8;
+            /* margin: 0;
+            padding: 0; */
+        }
+        main {
+            margin: 50px auto;
+            width: 50%;
+            max-width: 600px;
+        }
+     
+        /* #weather {
+            margin-top: 20px;
+            padding: 1px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        } */
+        /* img {
+            width: 100px;
+            height: 100px;
+        } */
+    </style>
+
+
+     <main>
+        <form>
+            <input type="search" id="search" placeholder="Enter city name" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        <div id="weather">
+            <h3>Welcome to weather app</h3>
+        </div>
+    </main>
+
+
+
+    // OpenWeatherMap API key
+const API_KEY = "31772367a0b149d2bb42b1e1764828e8";
+
+// Select necessary DOM elements
+const form = document.querySelector("form");
+const search = document.querySelector("#search");
+const weather = document.querySelector("#weather");
+
+
+search.addEventListener("input", (event) => {
+  console.log("User is typing:", event.target.value); // Logs the current input value
+});
+
+// Fetch weather data from API
+const getWeather = async (city) => {
+    try {
+        // Show a loading message
+        weather.innerHTML = `<h3>Loading...</h3>`;
+        
+        // Fetch data from the API fetch is a built-in JavaScript function that allows you to make HTTP requests (such as GET, POST, PUT, DELETE) from JavaScript to interact with remote resources like APIs or servers. It returns a Promise that resolves to the Response object representing the response to the request.
+
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+        const response = await fetch(url);
+        
+        // Handle invalid responses (city not found or other errors)
+        if (!response.ok) {
+            weather.innerHTML = `<h3 style="color: red;">City not found!</h3>`;
+            return; // Exit the function early if there's an error
+        }
+
+        // Parse the JSON response
+        const data = await response.json();
+        displayWeather(data); // Only call displayWeather if the response is valid
+    } catch (error) {
+        // Display error message for network issues
+        weather.innerHTML = `<h3 style="color: red;">${error.message}</h3>`;
+    }
+};
+
+// Display the fetched weather data
+const displayWeather = (data) => {
+    weather.innerHTML = `
+        <div>
+            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
+        </div>
+        <div>
+            <h2>${data.name}, ${data.sys.country}</h2>
+            <h3>${data.main.temp} ℃</h3>
+            <h4>${data.weather[0].description}</h4>
+            <p>Humidity: ${data.main.humidity}%</p>
+            <p>Wind Speed: ${data.wind.speed} m/s</p>
+        </div>
+    `;
+};
+
+
+// Add event listener to the form
+form.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent default form submission
+    const city = search.value.trim(); // Get the city name
+    console.log(search.value.trim(),"search.value")
+    if (city) {
+        getWeather(city); // Fetch weather data for the entered city
+        search.value = ""; // Clear the input field
+    } else {
+        weather.innerHTML = `<h3 style="color: red;">Please enter a city name!</h3>`;
+    }
+});
+
+
+==========================================================================================
+Using Promises:
+Now, let's refactor the getWeather function to use Promises explicitly.
+
+javascript
+Copy
+Edit
+// Promise-based version
+
+const getWeatherWithPromise = (city) => {
+    return new Promise((resolve, reject) => {
+        // Show a loading message
+        weather.innerHTML = `<h3>Loading...</h3>`;
+
+        // Fetch weather data from the API
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+        fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    reject("City not found!"); // Reject the Promise if the city is not found
+                } else {
+                    return response.json(); // Parse the response
+                }
+            })
+            .then(data => resolve(data)) // Resolve the Promise with the fetched data
+            .catch(error => reject(error.message)); // Reject on error
+    });
+};
+
+// Function to handle the response of the Promise
+const displayWeatherWithPromise = (data) => {
+    weather.innerHTML = `
+        <div>
+            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
+        </div>
+        <div>
+            <h2>${data.name}, ${data.sys.country}</h2>
+            <h3>${data.main.temp} ℃</h3>
+            <h4>${data.weather[0].description}</h4>
+            <p>Humidity: ${data.main.humidity}%</p>
+            <p>Wind Speed: ${data.wind.speed} m/s</p>
+        </div>
+    `;
+};
+
+// Handling the Promise with .then() and .catch()
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const city = search.value.trim();
+    if (city) {
+        getWeatherWithPromise(city)
+            .then(displayWeatherWithPromise) // Handle success
+            .catch((error) => {
+                weather.innerHTML = `<h3 style="color: red;">${error}</h3>`; // Handle error
+            });
+        search.value = "";
+    } else {
+        weather.innerHTML = `<h3 style="color: red;">Please enter a city name!</h3>`;
+    }
+});
+
+
+========================================================================================
+
+Using Callback:
+A callback is a function passed as an argument to another function, and it's executed after the completion of that function.
+
+In this case, we can modify the getWeather function to accept a callback that gets executed once the weather data is fetched:
+
+javascript
+Copy
+Edit
+// Callback-based version
+
+const getWeatherWithCallback = (city, callback) => {
+    // Show a loading message
+    weather.innerHTML = `<h3>Loading...</h3>`;
+
+    // Fetch weather data from the API
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                weather.innerHTML = `<h3 style="color: red;">City not found!</h3>`;
+                return; // Exit if the response is not OK
+            }
+            return response.json(); // Parse the response
+        })
+        .then(data => {
+            // Once data is fetched, pass it to the callback
+            callback(data);
+        })
+        .catch(error => {
+            // Handle network or other errors
+            weather.innerHTML = `<h3 style="color: red;">${error.message}</h3>`;
+        });
+};
+
+// Callback function to display the weather
+const displayWeatherCallback = (data) => {
+    weather.innerHTML = `
+        <div>
+            <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="Weather Icon">
+        </div>
+        <div>
+            <h2>${data.name}, ${data.sys.country}</h2>
+            <h3>${data.main.temp} ℃</h3>
+            <h4>${data.weather[0].description}</h4>
+            <p>Humidity: ${data.main.humidity}%</p>
+            <p>Wind Speed: ${data.wind.speed} m/s</p>
+        </div>
+    `;
+};
+
+// Use the callback function
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const city = search.value.trim();
+    if (city) {
+        getWeatherWithCallback(city, displayWeatherCallback); // Fetch data and pass the callback to display it
+        search.value = "";
+    } else {
+        weather.innerHTML = `<h3 style="color: red;">Please enter a city name!</h3>`;
+    }
+});
